@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:elevation="6dp"
+        android:indeterminateTint="@color/purple"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:drawableStart="@drawable/ic_arrow_12_22"
+                android:drawablePadding="14dp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/go_back"
+                android:textColor="@color/black_go_back"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnScanning"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_scanning"
+                app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnBack"
+                app:layout_constraintWidth_percent="0.1" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSearching"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rectangle_search"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:drawablePadding="4dp"
+                android:lines="1"
+                app:layout_constraintEnd_toEndOf="@+id/btnScanning"
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintStart_toStartOf="@+id/btnBack"
+                app:layout_constraintTop_toBottomOf="@+id/btnBack" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/etSearching"
+                app:layout_constraintStart_toStartOf="@+id/etSearching"
+                app:layout_constraintTop_toBottomOf="@+id/etSearching">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvChoose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_your"
+                    android:textColor="@color/text"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvChooseRooms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/rooms"
+                    android:textColor="@color/purple"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvChoose"
+                    app:layout_constraintStart_toEndOf="@+id/tvChoose"
+                    app:layout_constraintTop_toTopOf="@+id/tvChoose" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTheRooms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="@string/the_rooms"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/etSearching"
+                app:layout_constraintStart_toStartOf="@+id/etSearching"
+                app:layout_constraintTop_toBottomOf="@+id/cl" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnInvite"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/btn_purple_rounded"
+                android:text="@string/invite_link"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.05"
+                app:layout_constraintTop_toTopOf="@+id/tv1" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpRooms"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTheRooms">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+            <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/vpRoomsIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:ci_drawable="@drawable/btn_dark_rounded"
+                app:ci_drawable_unselected="@drawable/btn_rounded_outlined_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vpRooms" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/share"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vpRoomsIndicator" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/link"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/etSearching"
+                app:layout_constraintTop_toBottomOf="@+id/tvShare" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/generates_a_shareable_link_based_on_your_choosen_rooms"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnInvite"
+                app:layout_constraintStart_toStartOf="@+id/tv"
+                app:layout_constraintTop_toBottomOf="@+id/tv" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/direct"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnInvite"
+                app:layout_constraintStart_toStartOf="@+id/tv1"
+                app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSendText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_a_text_message_with_an_invite_link"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tv2"
+                app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContacts"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSendText"></androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

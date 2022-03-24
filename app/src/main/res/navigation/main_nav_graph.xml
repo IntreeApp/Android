@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/profilePreviewModeFragment">
+
+    <fragment
+        android:id="@+id/profilePreviewModeFragment"
+        android:name="com.intree.development.presentation.home.profile.ProfilePreviewModeFragment"
+        android:label="ProfilePreviewModeFragment"
+        tools:layout="@layout/profile_preview_mode_fragment">
+        <action
+            android:id="@+id/action_profilePreviewModeFragment_to_createRoomFragment2"
+            app:destination="@id/createRoomFragment" />
+        <action
+            android:id="@+id/action_profilePreviewModeFragment_to_profileEditModeFragment2"
+            app:destination="@id/profileEditModeFragment2" />
+        <action
+            android:id="@+id/action_profilePreviewModeFragment_to_roomDetailFragment"
+            app:destination="@id/roomDetailFragment">
+            <argument
+                android:name="roomId"
+                android:defaultValue=""
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/createRoomFragment"
+        android:name="com.intree.development.presentation.home.room.CreateEditRoomFragment"
+        android:label="CreateRoomFragment2"
+        tools:layout="@layout/create_room_fragment">
+        <action
+            android:id="@+id/action_createRoomFragment2_to_roomExistingImagesGalleryFragment2"
+            app:destination="@id/roomExistingImagesGalleryFragment2"
+            app:popUpTo="@id/profilePreviewModeFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="roomId"
+                android:defaultValue=""
+                app:argType="string" />
+        </action>
+        <argument
+            android:name="existingRoomToEdit"
+            android:defaultValue="@null"
+            app:argType="com.intree.development.domain.RoomEntity"
+            app:nullable="true" />
+        <argument
+            android:name="existingRoomId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_createRoomFragment_to_profilePreviewModeFragment"
+            app:destination="@id/profilePreviewModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEditModeFragment2"
+        android:name="com.intree.development.presentation.home.profile.ProfileEditModeFragment"
+        android:label="ProfileEditModeFragment"
+        tools:layout="@layout/profile_edit_mode_fragment" />
+    <fragment
+        android:id="@+id/roomExistingImagesGalleryFragment2"
+        android:name="com.intree.development.presentation.home.room.RoomExistingImagesGalleryFragment"
+        android:label="room_existing_images_gallery_fragment"
+        tools:layout="@layout/room_existing_images_gallery_fragment">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_roomExistingImagesGalleryFragment2_to_createRoomFragment2"
+            app:destination="@id/createRoomFragment">
+            <argument
+                android:name="existingRoomToEdit"
+                android:defaultValue="@null"
+                app:argType="com.intree.development.domain.RoomEntity"
+                app:nullable="true" />
+            <argument
+                android:name="existingRoomId"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/roomDetailFragment"
+        android:name="com.intree.development.presentation.home.room.RoomDetailFragment"
+        android:label="RoomDetailFragment"
+        tools:layout="@layout/room_detail_fragment">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_roomDetailFragment_to_createEditRoomFragment"
+            app:destination="@id/createRoomFragment">
+            <argument
+                android:name="existingRoomToEdit"
+                android:defaultValue="@null"
+                app:argType="com.intree.development.domain.RoomEntity"
+                app:nullable="true" />
+            <argument
+                android:name="existingRoomId"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentNetwork"
+        android:name="com.intree.development.presentation.home.network.NetworkFragment"
+        android:label="NetworkFragment"
+        tools:layout="@layout/fragment_network" />
+
+    <fragment
+        android:id="@+id/fragmentInvite"
+        android:name="com.intree.development.presentation.home.invite.InviteFragment"
+        android:label="InviteFragment"
+        tools:layout="@layout/fragment_invite" />
+
+    <fragment
+        android:id="@+id/bottomTabIntroduce"
+        android:name="com.intree.development.presentation.home.introduce.IntroduceFragment"
+        android:label="ItroduceFragment"
+        tools:layout="@layout/fragment_introduce" />
+
+
+</navigation>

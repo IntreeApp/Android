@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/signUpIntroFragment">
+    <fragment
+        android:id="@+id/signUpIntroFragment"
+        android:name="com.intree.development.presentation.auth.forms.SignUpIntroFragment"
+        android:label="SignUpIntroFragment"
+        tools:layout="@layout/sign_up_intro_fragment">
+            <action
+                android:id="@+id/action_signUpIntroFragment_to_signUpPhoneFromFragment"
+                app:destination="@id/signUpPhoneFromFragment"/>
+        <action
+            android:id="@+id/action_signUpIntroFragment_to_vebViewFragment"
+            app:destination="@id/webViewFragment">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/signUpPhoneFromFragment"
+        android:name="com.intree.development.presentation.auth.forms.SignUpPhoneFormFragment"
+        android:label="SignUpPhoneFromFragment"
+        tools:layout="@layout/sign_up_phone_form_fragment">
+        <action
+            android:id="@+id/action_signUpPhoneFromFragment_to_phoneValidationFragment"
+            app:destination="@id/phoneValidationFragment">
+            <argument
+                android:name="validPhone"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+        <action
+            android:id="@+id/action_signUpPhoneFromFragment_to_vebViewFragment"
+            app:destination="@id/webViewFragment">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/signUpNameFormFragment"
+        android:name="com.intree.development.presentation.auth.forms.SignUpNameFormFragment"
+        android:label="SignUpNameFormFragment"
+        tools:layout="@layout/sign_up_name_form_fragment" >
+        <action
+            android:id="@+id/action_signUpNameFormFragment_to_setUpUserActivityFragment"
+            app:destination="@id/setUpUserActivityFragment" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneValidationFragment"
+        android:name="com.intree.development.presentation.auth.validation.PhoneValidationFragment"
+        android:label="PhoneValidationFragment"
+        tools:layout="@layout/phone_validation_fragment">
+        <action
+            android:id="@+id/action_phoneValidationFragment_to_signUpNameFormFragment"
+            app:destination="@id/signUpNameFormFragment">
+            <argument
+                android:name="phone"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+        <argument
+            android:name="validPhone"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+    <fragment
+        android:id="@+id/setUpUserActivityFragment"
+        android:name="com.intree.development.presentation.auth.set_up.SetUpUserActivityFragment"
+        android:label="set_up_user_activity_fragment"
+        tools:layout="@layout/set_up_user_activity_fragment" >
+        <action
+            android:id="@+id/action_setUpUserActivityFragment_to_profileEditModeFragment"
+            app:destination="@id/profileEditModeFragment" />
+        <action
+            android:id="@+id/action_setUpUserActivityFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEditModeFragment"
+        android:name="com.intree.development.presentation.home.profile.ProfileEditModeFragment"
+        android:label="ProfileEditModeFragment"
+        tools:layout="@layout/profile_edit_mode_fragment">
+<!--        <action-->
+<!--            android:id="@+id/action_profileEditModeFragment_to_profilePreviewModeFragment"-->
+<!--            app:destination="@id/profilePreviewModeFragment" />-->
+        <action
+            android:id="@+id/action_profileEditModeFragment_to_createRoomFragment"
+            app:destination="@id/createRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.intree.development.presentation.home.web_view.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/webview_fragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/createRoomFragment"
+        android:name="com.intree.development.presentation.home.room.CreateEditRoomFragment"
+        android:label="CreateRoomFragment2"
+        tools:layout="@layout/create_room_fragment">
+        <action
+            android:id="@+id/action_createRoomFragment2_to_roomExistingImagesGalleryFragment2"
+            app:destination="@id/roomExistingImagesGalleryFragment2">
+            <argument
+                android:name="roomId"
+                app:argType="string"
+                android:defaultValue="" />
+        </action>
+        <argument
+            android:name="existingRoomToEdit"
+            app:argType="com.intree.development.domain.RoomEntity"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="existingRoomId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
+    <fragment
+        android:id="@+id/roomExistingImagesGalleryFragment2"
+        android:name="com.intree.development.presentation.home.room.RoomExistingImagesGalleryFragment"
+        android:label="room_existing_images_gallery_fragment"
+        tools:layout="@layout/room_existing_images_gallery_fragment" >
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_roomExistingImagesGalleryFragment2_to_createRoomFragment2"
+            app:destination="@id/createRoomFragment">
+            <argument
+                android:name="existingRoomToEdit"
+                app:argType="com.intree.development.domain.RoomEntity"
+                app:nullable="true"
+                android:defaultValue="@null" />
+            <argument
+                android:name="existingRoomId"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+    <!-- In Android Studio 4.1.1 it is possible to switch between screen orientations
+     in the navigation graph preview screen by tapping o key (the letter 'O', not the number 0). -->
+</navigation>

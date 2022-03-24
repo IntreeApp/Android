@@ -1,0 +1,146 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".presentation.auth.AuthActivity">
+
+    <TextView
+        android:id="@+id/tvBtnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logoMini"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/logo_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBtnLogin" />
+
+    <ImageView
+        android:id="@+id/disclImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/intro_discl_text_as_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoMini" />
+
+    <ImageView
+        android:id="@+id/screenImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/logo"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_intro_screens_phones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/disclImg" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_primary_rounded_rippled"
+        android:text="@string/sign_up_title"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:elevation="3dp"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toTopOf="@id/privacySectionHolder" />
+
+    <LinearLayout
+        android:id="@+id/privacySectionHolder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTermsDiscl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/terms_short_discl_1"
+            android:textColor="@color/backgrounds_half_transparent"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tvBtnTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/terms_of_service_title"
+            android:textColor="@color/backgrounds_half_transparent"
+            android:textSize="10sp"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tvTermsDiscl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/terms_short_discl_2"
+            android:textColor="@color/backgrounds_half_transparent"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tvBtnPrivacyPolicy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/privacy_policy_title"
+            android:textColor="@color/backgrounds_half_transparent"
+            android:textSize="10sp"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

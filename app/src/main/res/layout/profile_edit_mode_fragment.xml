@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.auth.AuthActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.home.profile.ProfileEditModeFragment">
+
+        <ImageView
+            android:id="@+id/profileChangeCoverImg"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_header_default_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/ciProfileCover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:indeterminateTint="@color/white"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnPseudoChangeCoverPhoto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/btn_change_profile_photo_rippled"
+            android:clickable="true"
+            android:elevation="1dp"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="21dp"
+                android:src="@drawable/ic_photo_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imgRoundedProfilePhoto"
+            android:layout_width="140dp"
+            android:layout_height="115dp"
+            android:layout_marginTop="112dp"
+            android:elevation="2dp"
+            android:scaleType='centerCrop'
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/profile_header_default_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            app:riv_corner_radius="10dp"
+            app:riv_mutate_background="false"
+            app:riv_oval="false"
+            app:riv_tile_mode="repeat" />
+
+        <ProgressBar
+            android:id="@+id/ciProfileAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="145dp"
+            android:layout_marginStart="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:indeterminateTint="@color/white"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="21dp"
+            android:elevation="3dp"
+            android:src="@drawable/ic_photo_light"
+            app:layout_constraintBottom_toBottomOf="@id/imgRoundedProfilePhoto"
+            app:layout_constraintEnd_toEndOf="@id/imgRoundedProfilePhoto"
+            app:layout_constraintStart_toStartOf="@id/imgRoundedProfilePhoto"
+            app:layout_constraintTop_toTopOf="@id/imgRoundedProfilePhoto" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEdit"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12.5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_dark_rounded_rippled"
+            android:elevation="3dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/done"
+            android:textAllCaps="false"
+            android:textColor="@color/backgrounds"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileChangeCoverImg" />
+
+        <LinearLayout
+            android:id="@+id/firstNameFormHolder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgRoundedProfilePhoto">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:paddingBottom="5dp"
+                android:text="@string/first_name_hint"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFirstName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="4"
+                android:fontFamily="@font/montserrat_bold"
+                android:imeActionLabel="@string/next"
+                android:imeOptions="actionDone"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:singleLine="true"
+                android:textColor="@color/text"
+                android:textColorHint="@color/primary_blue"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lastNameFormHolder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstNameFormHolder">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:paddingBottom="5dp"
+                android:text="@string/last_name_hint"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="4"
+                android:fontFamily="@font/montserrat_bold"
+                android:imeActionLabel="@string/done"
+                android:imeOptions="actionDone"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:singleLine="true"
+                android:textColor="@color/text"
+                android:textColorHint="@color/primary_blue"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRoomsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/rooms_title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastNameFormHolder" />
+
+        <TextView
+            android:id="@+id/tvRoomsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/rooms_hint"
+            android:textSize="12.5sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRoomsTitle" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/createRoomCardPlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRoomsDescription">
+
+            <View
+                android:id="@+id/roomCardBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/room_card_background" />
+
+            <View
+                android:id="@+id/roomCardBottom"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/room_card_bottom"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <View
+                android:id="@+id/pseudoBtnBackground"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/ic_add_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/create_your_first_room"
+                android:textColor="@color/backgrounds"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/roomAvatarBackground"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/room_avatar_background"
+                app:layout_constraintBottom_toBottomOf="@id/roomCardBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/roomCardBackground" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:layout_constraintTop_toBottomOf="@id/createRoomCardPlaceholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

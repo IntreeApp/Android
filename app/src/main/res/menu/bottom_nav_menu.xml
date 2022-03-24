@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomTabNetwork"
+        android:icon="@drawable/ic_network_tab_inactive"
+        android:title="@string/network" />
+
+    <item
+        android:id="@+id/bottomTabSearch"
+        android:icon="@drawable/ic_inbox_tab_inactive"
+        android:title="@string/inbox" />
+
+    <item
+        android:id="@+id/bottomTabPlaceholder"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomTabIntroduce"
+        android:icon="@drawable/ic_introduce_tab_inactive"
+        android:title="@string/introduce" />
+
+    <item
+        android:id="@+id/bottomTabProfile"
+        android:icon="@drawable/ic_profile_tab_active"
+        android:title="@string/profile" />
+
+</menu>

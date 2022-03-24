@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/backgrounds"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.auth.AuthActivity">
+
+    <ImageView
+        android:id="@+id/imgCodeIsValidIndicator"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/ic_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/we_send_you_a_code_title" />
+
+    <LinearLayout
+        android:id="@+id/nameFormScrTitleHolder"
+        app:layout_constraintTop_toBottomOf="@id/imgCodeIsValidIndicator"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvDiscl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/awesome"
+            android:textColor="@color/primary_blue"
+            android:textSize="15sp"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tvDiscl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/your_profile_is_verified"
+            android:textColor="@color/primary_blue"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSendingCodeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what_is_your_name"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/text_bold_gray"
+        android:layout_marginTop="95dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameFormScrTitleHolder" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etFirstNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/first_name_hint"
+        android:background="@color/backgrounds"
+        android:focusable="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/primary_blue"
+        android:textColorHint="@color/primary_blue"
+        app:hintTextColor="@color/primary_blue"
+        app:layout_constraintTop_toBottomOf="@id/tvSendingCodeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFirstName"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColorHint="@color/primary_blue"
+            android:textSize="20sp"
+            android:textColor="@color/text"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:imeActionLabel="@string/next"
+            android:singleLine="true"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:background="@color/backgrounds"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etLastNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/last_name_hint"
+        android:focusable="true"
+        android:background="@color/backgrounds"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/primary_blue"
+        android:textColorHint="@color/primary_blue"
+        app:layout_constraintTop_toBottomOf="@id/etFirstNameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColorHint="@color/primary_blue"
+            android:textSize="20sp"
+            android:textColor="@color/text"
+            android:imeOptions="actionDone"
+            android:imeActionLabel="@string/done"
+            android:singleLine="true"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/backgrounds"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnContinue"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/btn_primary_rounded_rippled"
+        android:text="@string/continue_short"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:elevation="8dp"
+        android:textColor="@color/text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

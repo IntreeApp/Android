@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.auth.AuthActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.home.profile.ProfileEditModeFragment">
+
+        <ImageView
+            android:id="@+id/profileCoverImg"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_header_default_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imgProfilePhotoPreview"
+            android:layout_width="140dp"
+            android:layout_height="115dp"
+            android:layout_marginTop="112dp"
+            android:elevation="2dp"
+            android:scaleType='centerCrop'
+            android:src="@drawable/profile_header_default_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_color="@color/white"
+            app:riv_border_width="1dp"
+            app:riv_corner_radius="10dp"
+            app:riv_mutate_background="false"
+            app:riv_oval="false"
+            app:riv_tile_mode="repeat" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditProfile"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="12.5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_rounded_outlined_light"
+            android:elevation="3dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/edit"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_blue"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileCoverImg" />
+
+        <TextView
+            android:id="@+id/tvUserFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="62dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="-"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileCoverImg"/>
+
+        <TextView
+            android:id="@+id/tvRoomsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/rooms_title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileCoverImg"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpRooms"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="90dp"
+            app:layout_constraintTop_toBottomOf="@id/tvUserFullName">
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/vpRoomsIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/vpRooms"
+            app:ci_drawable="@drawable/btn_dark_rounded"
+            app:ci_drawable_unselected="@drawable/btn_rounded_outlined_light"
+            android:layout_marginTop="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
