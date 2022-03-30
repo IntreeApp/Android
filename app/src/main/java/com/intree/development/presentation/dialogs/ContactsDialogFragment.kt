@@ -1,6 +1,7 @@
-package com.intree.development.presentation.home.invite
+package com.intree.development.presentation.dialogs
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -12,33 +13,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.intree.development.R
 import com.intree.development.data.model.ReferContactData
-import com.intree.development.databinding.FragmentInviteBinding
+import com.intree.development.databinding.DialogFragmentContactsBinding
 import com.intree.development.presentation.adapter.ContactsAdapter
-import com.intree.development.presentation.home.profile.view_pager.RoomVPAdapter
-import com.intree.development.presentation.home.profile.vm.ProfileViewModel
+import com.intree.development.presentation.home.invite.InviteFragment
+import com.intree.development.presentation.home.invite.InviteViewModel
 import com.intree.development.presentation.interfaces.IContacts
-import com.intree.development.presentation.scanCode.ScanCodeActivity
-import com.journeyapps.barcodescanner.CaptureActivity
-import com.journeyapps.barcodescanner.ScanContract
-import com.journeyapps.barcodescanner.ScanIntentResult
-import com.journeyapps.barcodescanner.ScanOptions
 
+class ContactsDialogFragment : DialogFragment(), IContacts {
 
-class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
-
-    private lateinit var binding: FragmentInviteBinding
-    private val profileVm by viewModels<ProfileViewModel>()
+    private lateinit var binding: DialogFragmentContactsBinding
     private val inviteVm by viewModels<InviteViewModel>()
     private val contactsAdapter = ContactsAdapter(this)
+
 
     companion object {
         private const val requestContactCode = 1
@@ -54,24 +47,13 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         savedInstanceState: Bundle?
     ): View {
         if (!::binding.isInitialized) {
-            binding = FragmentInviteBinding.inflate(inflater)
+            binding = DialogFragmentContactsBinding.inflate(inflater)
         }
-        binding.progressBar.visibility = View.VISIBLE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requestPermissions(requireActivity(), permissionArray, requestContactCode)
-        if (allPermissionsGranted()) {
-            inviteVm.getContacts(requireContext())
-            initRooms()
-            initSearching()
-            initAdapter()
-            initOnClickListeners()
-        } else {
-            view.findNavController().navigateUp()
-        }
     }
 
     override fun onRequestPermissionsResult(
@@ -81,30 +63,12 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
     ) {
         if (requestCode == requestContactCode) {
             if (allPermissionsGranted()) {
+                binding.progressBar.visibility = View.VISIBLE
                 inviteVm.getContacts(requireContext())
-                initRooms()
-                initSearching()
                 initAdapter()
             } else {
-                view?.findNavController()?.navigateUp()
+                dialog?.cancel()
             }
-        }
-    }
-
-
-    private val barcodeLauncher = registerForActivityResult(
-        ScanContract()
-    ) { result: ScanIntentResult ->
-        if (result.contents == null) {
-           // Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
-        } else {
-            result.contents
-
-            Toast.makeText(
-                requireContext(),
-                "Scanned: " + result.contents,
-                Toast.LENGTH_LONG
-            ).show()
         }
     }
 
@@ -115,24 +79,23 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun initRooms() {
-        profileVm.getOwnRooms()
-        val viewpager: ViewPager2 = binding.vpRooms
-        viewpager.adapter = RoomVPAdapter(childFragmentManager, lifecycle)
-
-        viewpager.clipToPadding = false
-        viewpager.offscreenPageLimit = 2
-
-        binding.vpRoomsIndicator.setViewPager(viewpager)
-        profileVm.ownRooms.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                it.forEach { roomForPreview ->
-                    (viewpager.adapter as RoomVPAdapter).addExistingRoomItem(roomEntityForPreview = roomForPreview)
-                }
+    private fun initAdapter() {
+        inviteVm.contactsLive.observe(viewLifecycleOwner) { contacts ->
+            if (!contacts.isNullOrEmpty()) {
+                binding.rvContacts.adapter = contactsAdapter
+                binding.rvContacts.setHasFixedSize(true)
+                val layoutManager = LinearLayoutManager(requireContext())
+                binding.rvContacts.layoutManager = layoutManager
+                contactsAdapter.setData(contacts)
+                initSearching()
+            } else {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.you_did_not_have_contacts),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-            (viewpager.adapter as RoomVPAdapter).addCreateRoomItem(it.isEmpty())
-
-            binding.vpRoomsIndicator.setViewPager(viewpager)
         }
     }
 
@@ -190,40 +153,25 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         })
     }
 
-    private fun initOnClickListeners() {
-        binding.btnBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
-
-        binding.btnScanning.setOnClickListener {
-            val options = ScanOptions()
-            options.captureActivity = ScanCodeActivity::class.java
-            options.setOrientationLocked(true)
-            options.setDesiredBarcodeFormats(ScanOptions.ALL_CODE_TYPES)
-            options.setPrompt("Scan a QR code")
-            options.setCameraId(0)
-            options.setBeepEnabled(true)
-            options.setBarcodeImageEnabled(true)
-            barcodeLauncher.launch(options)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return object : Dialog(requireContext(), theme) {
+            override fun onBackPressed() {
+                dialog?.cancel()
+            }
         }
     }
 
-    private fun initAdapter() {
-        inviteVm.contactsLive.observe(viewLifecycleOwner) { contacts ->
-            if (!contacts.isNullOrEmpty()) {
-                binding.rvContacts.adapter = contactsAdapter
-                binding.rvContacts.setHasFixedSize(true)
-                val layoutManager = LinearLayoutManager(requireContext())
-                binding.rvContacts.layoutManager = layoutManager
-                contactsAdapter.setData(contacts)
-            } else {
-                binding.progressBar.visibility = View.GONE
-                Toast.makeText(
-                    requireContext(),
-                    resources.getString(R.string.you_did_not_have_contacts),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+    override fun onStart() {
+        super.onStart()
+        val dialog: Dialog? = dialog
+        if (dialog != null) {
+            val width = ViewGroup.LayoutParams.MATCH_PARENT
+            val height = ViewGroup.LayoutParams.MATCH_PARENT
+            dialog.window?.setLayout(width, height)
+            dialog.window?.setBackgroundDrawableResource(
+                R.color.white
+            )
+            dialog.setCancelable(true)
         }
     }
 
@@ -234,5 +182,4 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
     override fun onItemReady() {
         binding.progressBar.visibility = View.GONE
     }
-
 }
