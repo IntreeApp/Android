@@ -1,45 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/networkFragment"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="3dp">
+    <!--tools:context=".NetworkFragment"-->
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTittle"
+
+    <!-- TextView to display when given search has no results
+    <TextView
+        android:id="@+id/tv_emptyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/network"
-        android:textColor="@color/purple"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:text="No results"
+        android:textSize="20sp"
+        android:visibility="gone" />
+        -->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnInvite"
+    <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/qrIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:background="@drawable/qr_icon"
+            android:contentDescription="Menu bar"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    <TextView
+        android:id="@+id/titleTopFragment"
+        android:layout_width="81dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="58dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center_horizontal"
+        android:text="Network"
+        android:textColor="@color/text"
+        app:layout_constraintEnd_toStartOf="@+id/inviteBtn"
+        app:layout_constraintStart_toEndOf="@+id/qrIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/inviteBtn"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat_bold"
         android:background="@drawable/btn_purple_rounded"
-        android:text="@string/invite_plus"
+        android:drawableEnd="@drawable/ic_baseline_add_24"
+        android:includeFontPadding="false"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/invite"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTittle"
+        android:paddingStart="10dp"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.05"
-        app:layout_constraintTop_toTopOf="@+id/tvTittle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icSort"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchViewContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_sort"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTittle"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvTittle" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTopFragment"
+        app:cardCornerRadius="10dp">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="386dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:queryBackground="@android:color/transparent"
+            android:submitBackground="@drawable/search_bar"
+            android:background="@drawable/search_bar"
+            android:fontFamily="@font/montserrat">
+        </SearchView>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewContainer"
+        tools:ignore="UnknownId">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_intree_semi_transparent"
+            android:scrollbars="none"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+
+            <LinearLayout
+                android:id="@+id/cardContainerBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Recents"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/text"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fillViewport="true"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView">
+
+
+                    <LinearLayout
+                        android:id="@+id/cardContainerRecents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:fontFamily="@font/montserrat_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleTopFragment">
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
