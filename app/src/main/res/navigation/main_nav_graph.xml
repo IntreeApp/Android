@@ -117,9 +117,9 @@
 
     <fragment
         android:id="@+id/bottomTabIntroduce"
-        android:name="com.intree.development.presentation.home.introduce.IntroduceFragment"
-        android:label="ItroduceFragment"
-        tools:layout="@layout/fragment_introduce" />
+        android:name="com.intree.development.presentation.home.introduce.IntroductionsFragment"
+        android:label="IntroductionsFragment"
+        tools:layout="@layout/fragment_introductions" />
 
 
 </navigation>

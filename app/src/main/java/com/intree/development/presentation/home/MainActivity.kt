@@ -10,7 +10,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.MotionEvent
-import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.DimenRes
@@ -26,12 +27,13 @@ import com.intree.development.presentation.home.introduce.IntroductionsFragment
 import com.intree.development.presentation.home.network.NetworkFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,43 +46,46 @@ class MainActivity : FragmentActivity() {
         val introductionsFragment = IntroductionsFragment()
         val inboxFragment = InboxFragment()
 
+        //Can't get it to wwork wwith binding
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        val bottomNavCenterIcon = findViewById<FloatingActionButton>(R.id.fab)
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val scaledBottomNavIconPressed = context.scaledDrawableResources(R.drawable.ic_btn_nav_bar_center_pressed, R.dimen.design_fab_image_size, R.dimen.design_fab_image_size)
+
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.bottomTabNetwork -> {
                     setCurrentFragment(networkFragment)
-                    bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
+                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
                 }
                 R.id.bottomTabIntroduce -> {
                     setCurrentFragment(introductionsFragment)
-                    bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
+                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
                 }
                 R.id.bottomTabProfile -> {
-                    bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
+                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
                 }
                 R.id.bottomTabInbox -> {
                     setCurrentFragment(inboxFragment)
-                    bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
+                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
                 }
 
             }
             true
         }
 
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val scaledBottomNavIconPressed = context.scaledDrawableResources(R.drawable.ic_btn_nav_bar_center_pressed, R.dimen.design_fab_image_size, R.dimen.design_fab_image_size)
-
-        bottomNavCenterIcon.setOnClickListener {
+        fab.setOnClickListener {
             bottomNavigationView.selectedItemId = R.id.bottomTabExplore
-            bottomNavCenterIcon.setImageDrawable(scaledBottomNavIconPressed)
+            binding.fab.setImageDrawable(scaledBottomNavIconPressed)
         }
 
-        // Makes the status bar white TODO: Doesn't work
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // Makes the status bar white TODO: Only works when sign up flow is done
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w: Window = window
+            w.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
         }
     }
 
@@ -90,18 +95,6 @@ class MainActivity : FragmentActivity() {
             transaction.replace(R.id.main_host_fragment, fragment)
             transaction.commit()
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val bottomNavCenterIcon = findViewById<FloatingActionButton>(R.id.bottomNavigationView)
-        when (item.itemId) {
-            R.id.bottomTabNetwork -> bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
-            R.id.bottomTabIntroduce -> bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
-            R.id.bottomTabProfile -> bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
-            R.id.bottomTabInbox -> bottomNavCenterIcon.setImageResource(R.drawable.ic_btn_nav_bar_center)
-
-        }
-        return super.onOptionsItemSelected(item)
     }
 
 

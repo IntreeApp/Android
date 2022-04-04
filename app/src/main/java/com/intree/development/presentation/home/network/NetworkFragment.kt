@@ -1,8 +1,6 @@
 package com.intree.development.presentation.home.network
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,14 +11,13 @@ import androidx.fragment.app.Fragment
 import com.intree.development.databinding.FragmentNetworkBinding
 import com.intree.development.R
 import com.intree.development.domain.UserDataEntity
-import java.io.File
 
 
 class NetworkFragment : Fragment(R.layout.fragment_network)  {
 
 
-    private lateinit var _binding: FragmentNetworkBinding
-    private lateinit var contactArrayList: ArrayList<UserDataEntity>
+    private lateinit var binding: FragmentNetworkBinding
+
 
     // Mock DB for filling out Recents-scrollview
     val usernamesRecents = arrayOf("Amir Khan", "Art Peterson", "Janko Pascal", "Julian Joyce", "Imansyah XX", "Jessica Hansson", "Jon Buckley")
@@ -35,7 +32,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentNetworkBinding.bind(view)
+        binding = FragmentNetworkBinding.bind(view)
 
         // Fills out the Recents-list with small cards
         for (username in usernamesRecents) {
@@ -56,15 +53,14 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
             }
         }
 
-        // Adds 2 extra wide cards at the bottom to compensate for the view overflowing at the bottom
-        addWideCard("Intree", R.drawable.intree_logo, "")
-        addWideCard("Intree", R.drawable.intree_logo, "")
+        // Adds special wide card at the bottom to compensate for the view overflow
+        addWideCardBottomSpacer()
 
 
         /**
             Setup of search bar
          */
-        var searchview = _binding.searchView
+        var searchview = binding.searchView
 
         searchview.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(newText: String?): Boolean {
@@ -72,7 +68,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
             }
             override fun onQueryTextChange(newText: String?): Boolean {
                 // Cast cardContainer as ViewGroup to access removeAllViews()
-                val cardContainerVG = _binding.cardContainerBottom as ViewGroup
+                val cardContainerVG = binding.cardContainerBottom as ViewGroup
 
                 // Clear the content of bottom list
                 cardContainerVG.removeAllViews()
@@ -151,7 +147,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
         nameView.text = name
         imageView.setImageResource(imageResource)
 
-        _binding.cardContainerRecents.addView(view)
+        binding.cardContainerRecents.addView(view)
     }
 
 
@@ -166,8 +162,20 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
         imageView.setImageResource(imageResource)
         connectionView.text = connection
 
-        _binding.cardContainerBottom.addView(view)
+        binding.cardContainerBottom.addView(view)
+    }
 
+    private fun addWideCardBottomSpacer() {
+        val view = layoutInflater.inflate(R.layout.network_card_wide_bottom_spacer, null)
+
+        val nameView = view.findViewById<TextView>(R.id.tvNameWideCard)
+        val imageView = view.findViewById<ImageView>(R.id.ivWidecard)
+
+        nameView.text = "Intree"
+        imageView.setImageResource(R.drawable.intree_logo)
+
+
+        binding.cardContainerBottom.addView(view)
     }
 
     // For possible future use
@@ -186,5 +194,5 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
         _binding.cardContainerBottom.addView(view)
 
     }
-    +*/
+    */
 }
