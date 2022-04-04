@@ -41,6 +41,9 @@
                 android:gravity="center_horizontal"
                 android:paddingTop="3dp"
                 android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text="Janko Pascal"
                 android:textSize="12sp"
                 android:textStyle="bold" />

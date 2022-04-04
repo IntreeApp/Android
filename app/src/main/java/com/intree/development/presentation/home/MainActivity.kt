@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intree.development.R
 import com.intree.development.databinding.ActivityMainBinding
+import com.intree.development.presentation.home.explore.ExploreFragment
 import com.intree.development.presentation.home.inbox.InboxFragment
 import com.intree.development.presentation.home.introduce.IntroductionsFragment
 import com.intree.development.presentation.home.network.NetworkFragment
@@ -45,8 +46,9 @@ class MainActivity : FragmentActivity() {
         val networkFragment = NetworkFragment()
         val introductionsFragment = IntroductionsFragment()
         val inboxFragment = InboxFragment()
+        val exploreFragment = ExploreFragment()
 
-        //Can't get it to wwork wwith binding
+        //Can't get it to work with binding
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         val scaledBottomNavIconPressed = context.scaledDrawableResources(R.drawable.ic_btn_nav_bar_center_pressed, R.dimen.design_fab_image_size, R.dimen.design_fab_image_size)
@@ -69,14 +71,14 @@ class MainActivity : FragmentActivity() {
                     setCurrentFragment(inboxFragment)
                     fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
                 }
-
             }
             true
         }
 
         fab.setOnClickListener {
+            setCurrentFragment(exploreFragment)
             bottomNavigationView.selectedItemId = R.id.bottomTabExplore
-            binding.fab.setImageDrawable(scaledBottomNavIconPressed)
+            fab.setImageDrawable(scaledBottomNavIconPressed)
         }
 
         // Makes the status bar white TODO: Only works when sign up flow is done
