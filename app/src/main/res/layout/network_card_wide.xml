@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        app:cardElevation="10dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivWidecard"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedimageview"
+                app:srcCompat="@drawable/cesar_rincon" />
+
+            <TextView
+                android:id="@+id/tvNameWideCard"
+                android:layout_width="200dp"
+                android:layout_height="20dp"
+                android:layout_gravity="top"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:text="Cesar Rincon"
+                android:textColor="@color/text"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintStart_toEndOf="@+id/ivWidecard"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvConectedWideCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Connected:"
+                app:layout_constraintStart_toEndOf="@+id/ivWidecard"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameWideCard" />
+
+            <TextView
+                android:id="@+id/tvConnectedContentWideCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/by_invite"
+                android:textColor="@color/primary_purple"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tvConectedWideCard"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameWideCard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

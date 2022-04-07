@@ -133,7 +133,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputMessage"
-                style="@style/mTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -166,7 +165,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/appCompatTextView"
                     app:layout_constraintEnd_toEndOf="@+id/appCompatTextView16"
                     app:layout_constraintStart_toStartOf="@+id/appCompatTextView16" />
-           </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <!--            <androidx.appcompat.widget.AppCompatTextView-->

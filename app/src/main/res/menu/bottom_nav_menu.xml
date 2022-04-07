@@ -7,13 +7,13 @@
         android:title="@string/network" />
 
     <item
-        android:id="@+id/bottomTabSearch"
+        android:id="@+id/bottomTabInbox"
         android:icon="@drawable/ic_inbox_tab_inactive"
         android:title="@string/inbox" />
 
     <item
-        android:id="@+id/bottomTabPlaceholder"
-        android:title="" />
+        android:id="@+id/bottomTabExplore"
+        android:title="Explore" />
 
     <item
         android:id="@+id/bottomTabIntroduce"
