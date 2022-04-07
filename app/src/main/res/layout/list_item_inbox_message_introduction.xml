@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp">
+
+    <RelativeLayout
+        android:id="@+id/introductionMessageAvatarContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/introductionMessageAvatar"
+            android:layout_width="@dimen/inbox_avatar_size"
+            android:layout_height="@dimen/inbox_avatar_size"
+            android:src="@android:drawable/progress_indeterminate_horizontal"
+            app:riv_corner_radius="50dp" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="@dimen/inbox_avatar_size"
+            android:layout_height="@dimen/inbox_avatar_size"
+            android:src="@color/primary_purple_half_filled"
+            app:riv_corner_radius="50dp" />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_double_arrows_white"
+            app:riv_corner_radius="50dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/introductionMessageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/introductionMessageAvatarContainer"
+        android:fontFamily="@font/montserrat_extra_bold"
+        android:text="Jimmi Peterson"
+        android:textColor="@color/primary_purple" />
+
+    <TextView
+        android:id="@+id/introductionMessageContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/introductionMessageName"
+        android:layout_marginStart="8dp"
+        android:layout_toRightOf="@id/introductionMessageAvatarContainer"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxWidth="240dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Yeah I get it!" />
+
+    <TextView
+        android:id="@+id/introductionMessageDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/introductionMessageName"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toRightOf="@id/introductionMessageContent"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="·" />
+
+    <TextView
+        android:id="@+id/introductionMessageTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/introductionMessageDot"
+        android:layout_below="@id/introductionMessageName"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Wed"/>
+
+</RelativeLayout>

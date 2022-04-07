@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+
+        android:id="@+id/readMessageAvatar"
+        android:layout_width="@dimen/inbox_avatar_size"
+        android:layout_height="@dimen/inbox_avatar_size"
+        android:src="@drawable/amir"
+        app:riv_corner_radius="50dp" />
+
+    <TextView
+        android:id="@+id/readMessageName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/readMessageAvatar"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Jimmi Peterson"
+        android:textColor="@color/text" />
+
+    <TextView
+        android:id="@+id/readMessageContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/readMessageName"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/readMessageAvatar"
+        android:fontFamily="@font/montserrat_regular"
+        android:maxWidth="240dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Yeah I get it!" />
+
+    <TextView
+        android:id="@+id/readMessageDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/readMessageName"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@id/readMessageContent"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="·" />
+
+    <TextView
+        android:id="@+id/readMessageTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/readMessageName"
+        android:layout_toEndOf="@id/readMessageDot"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Wed" />
+
+</RelativeLayout>
