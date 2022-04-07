@@ -13,7 +13,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.intree.development.R
@@ -32,6 +34,7 @@ class MainActivity : FragmentActivity() {
         val view = binding.root
         setContentView(view)
         initNavController()
+        onNavigationListener()
 
         val context = applicationContext
 
@@ -100,5 +103,22 @@ class MainActivity : FragmentActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
         binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
+    }
+
+    private fun onNavigationListener() {
+        val listener =
+            NavController.OnDestinationChangedListener { controller, destination, arguments ->
+                if (destination.id != R.id.exploreFragment) {
+                    binding.fab.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_btn_nav_bar_center
+                        )
+                    )
+                }
+            }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
+        navHostFragment.navController.addOnDestinationChangedListener(listener)
     }
 }
