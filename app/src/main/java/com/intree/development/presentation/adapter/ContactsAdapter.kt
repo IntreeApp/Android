@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.intree.development.R
+import com.intree.development.data.model.IntroduceHistoryUIModel
 import com.intree.development.data.model.ReferContactData
 import com.intree.development.databinding.ItemContactBinding
 import com.intree.development.presentation.interfaces.IContacts
@@ -42,12 +43,12 @@ class ContactsAdapter(private val listener: IContacts) :
             if (model.photoUri.isEmpty()) {
                 Glide.with(context)
                     .load(R.drawable.ic_no_photo)
-                    .override(200, 200)
+                    .override(100, 100)
                     .into(itemBinding.imgRoundedProfilePhoto)
             } else {
                 Glide.with(context)
                     .load(model.photoUri)
-                    .override(200, 200)
+                    .override(100, 100)
                     .into(itemBinding.imgRoundedProfilePhoto)
             }
 

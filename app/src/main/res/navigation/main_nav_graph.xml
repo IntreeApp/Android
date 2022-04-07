@@ -117,9 +117,15 @@
 
     <fragment
         android:id="@+id/bottomTabIntroduce"
-        android:name="com.intree.development.presentation.home.introduce.IntroductionsFragment"
-        android:label="IntroductionsFragment"
-        tools:layout="@layout/fragment_introductions" />
+        android:name="com.intree.development.presentation.home.introduce.IntroduceFragment"
+        android:label="IntroduceFragment"
+        tools:layout="@layout/fragment_introduce" />
+
+    <fragment
+        android:id="@+id/introduceHistoryFragment"
+        android:name="com.intree.development.presentation.home.introduce.history.IntroduceHistoryFragment"
+        android:label="IntroduceHistoryFragment"
+        tools:layout="@layout/fragment_introduce_history" />
 
 
 </navigation>
