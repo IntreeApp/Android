@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.intree.development.R
 import com.intree.development.databinding.FragmentIntroduceBinding
 import com.intree.development.presentation.dialogs.ContactsDialogFragment
+import com.intree.development.presentation.dialogs.WellDoneDialogFragment
+import com.ncorti.slidetoact.SlideToActView
 
 class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
 
@@ -36,12 +39,12 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
     private fun initContent() {
         Glide.with(requireContext())
             .load(R.drawable.ic_no_photo)
-            .override(250, 250)
+            .override(150, 150)
             .into(binding.imgRoundedProfilePhoto)
 
         Glide.with(requireContext())
             .load(R.drawable.ic_ellipse_84)
-            .override(250, 250)
+            .override(150, 150)
             .into(binding.imgRoundedFriend)
 
         initOnClickListeners()
@@ -75,7 +78,19 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
             false
         })
 
+        binding.btnHistory.setOnClickListener {
+            findNavController().navigate(R.id.introduceHistoryFragment)
+        }
 
+        binding.sw.onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
+
+            override fun onSlideComplete(view: SlideToActView) {
+                //todo logic
+                WellDoneDialogFragment().show(
+                    requireActivity().supportFragmentManager,
+                    this.javaClass.simpleName
+                )
+            }
+        }
     }
-
 }

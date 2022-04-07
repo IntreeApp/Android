@@ -122,7 +122,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnInvite"
+                android:id="@+id/btnHistory"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
@@ -191,7 +191,7 @@
                 android:text="@string/generates_a_shareable_link_based_on_your_choosen_rooms"
                 android:textColor="@color/text"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnInvite"
+                app:layout_constraintEnd_toStartOf="@+id/btnHistory"
                 app:layout_constraintStart_toStartOf="@+id/tv"
                 app:layout_constraintTop_toBottomOf="@+id/tv" />
 
@@ -205,7 +205,7 @@
                 android:text="@string/direct"
                 android:textColor="@color/purple"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnInvite"
+                app:layout_constraintEnd_toStartOf="@+id/btnHistory"
                 app:layout_constraintStart_toStartOf="@+id/tv1"
                 app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
