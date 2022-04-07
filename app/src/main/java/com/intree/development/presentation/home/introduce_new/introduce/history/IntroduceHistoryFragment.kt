@@ -1,4 +1,4 @@
-package com.intree.development.presentation.home.introduce.history
+package com.intree.development.presentation.home.introduce_new.introduce.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
