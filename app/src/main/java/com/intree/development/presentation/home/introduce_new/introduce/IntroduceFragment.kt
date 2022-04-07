@@ -1,4 +1,4 @@
-package com.intree.development.presentation.home.introduce
+package com.intree.development.presentation.home.introduce_new.introduce
 
 import android.content.Context
 import android.os.Bundle
