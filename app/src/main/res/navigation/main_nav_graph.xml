@@ -133,5 +133,10 @@
         android:label="InboxFragment"
         tools:layout="@layout/fragment_inbox" />
 
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.intree.development.presentation.home.explore.ExploreFragment"
+        android:label="ExploreFragment"
+        tools:layout="@layout/fragment_explore" />
 
 </navigation>

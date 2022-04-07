@@ -8,26 +8,16 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.MotionEvent
-import android.view.Window
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intree.development.R
 import com.intree.development.databinding.ActivityMainBinding
-import com.intree.development.presentation.home.explore.ExploreFragment
-import com.intree.development.presentation.home.inbox.InboxFragment
-import com.intree.development.presentation.home.introduce.IntroductionsFragment
-import com.intree.development.presentation.home.network.NetworkFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -57,18 +47,20 @@ class MainActivity : FragmentActivity() {
                 supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
             binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
             navHostFragment.navController.popBackStack()
-            navHostFragment.navController.navigate(R.id.bottomTabExplore)
+            navHostFragment.navController.navigate(R.id.exploreFragment)
             binding.fab.setImageDrawable(scaledBottomNavIconPressed)
         }
 
         // Makes the status bar white TODO: Only works when sign up flow is done
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w: Window = window
-            w.setFlags(
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-            )
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            val w: Window = window
+//            w.setFlags(
+//                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//            )
+//        }
+
+
     }
 
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
