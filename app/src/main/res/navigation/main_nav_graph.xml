@@ -104,7 +104,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragmentNetwork"
+        android:id="@+id/bottomTabNetwork"
         android:name="com.intree.development.presentation.home.network.NetworkFragment"
         android:label="NetworkFragment"
         tools:layout="@layout/fragment_network" />
@@ -126,6 +126,12 @@
         android:name="com.intree.development.presentation.home.introduce_new.introduce.history.IntroduceHistoryFragment"
         android:label="IntroduceHistoryFragment"
         tools:layout="@layout/fragment_introduce_history" />
+
+    <fragment
+        android:id="@+id/bottomTabInbox"
+        android:name="com.intree.development.presentation.home.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_inbox" />
 
 
 </navigation>

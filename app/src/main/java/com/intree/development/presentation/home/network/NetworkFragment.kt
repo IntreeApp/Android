@@ -8,31 +8,77 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.intree.development.databinding.FragmentNetworkBinding
 import com.intree.development.R
 import com.intree.development.domain.UserDataEntity
 
 
-class NetworkFragment : Fragment(R.layout.fragment_network)  {
+class NetworkFragment : Fragment(R.layout.fragment_network) {
 
 
     private lateinit var binding: FragmentNetworkBinding
 
 
     // Mock DB for filling out Recents-scrollview
-    val usernamesRecents = arrayOf("Amir Khan", "Art Peterson", "Janko Pascal", "Julian Joyce", "Imansyah XX", "Jessica Hansson", "Jon Buckley")
-    val userIconsMapRecents = mapOf("Amir Khan" to R.drawable.amir,"Art Peterson" to R.drawable.art, "Imansyah XX" to R.drawable.imansyah,"Janko Pascal" to R.drawable.janko, "Jessica Hansson" to R.drawable.jessica, "Jon Buckley" to R.drawable.jonathan, "Julian Joyce" to R.drawable.julian)
+    val usernamesRecents = arrayOf(
+        "Amir Khan",
+        "Art Peterson",
+        "Janko Pascal",
+        "Julian Joyce",
+        "Imansyah XX",
+        "Jessica Hansson",
+        "Jon Buckley"
+    )
+    val userIconsMapRecents = mapOf(
+        "Amir Khan" to R.drawable.amir,
+        "Art Peterson" to R.drawable.art,
+        "Imansyah XX" to R.drawable.imansyah,
+        "Janko Pascal" to R.drawable.janko,
+        "Jessica Hansson" to R.drawable.jessica,
+        "Jon Buckley" to R.drawable.jonathan,
+        "Julian Joyce" to R.drawable.julian
+    )
 
     // Mock DB for filling out bottom-scrollview
-    val usernamesBottom = arrayOf("Cesar Rincon", "Clem Onojeghuo", "Hannah Busing", "Madison Lavern", "Mika laPetri", "Mike Clark", "Seth Doyle")
-    val userIconsMapBottom = mapOf("Cesar Rincon" to R.drawable.cesar_rincon, "Clem Onojeghuo" to R.drawable.clem_onojeghuo, "Hannah Busing" to R.drawable.hannah_busing, "Madison Lavern" to R.drawable.madison_lavern, "Mika laPetri" to R.drawable.mika_lapetri, "Mike Clark" to R.drawable.mike_clark, "Seth Doyle" to R.drawable.seth_doyle)
-    val connectionsMapBottom = mapOf("Cesar Rincon" to "By invite", "Clem Onojeghuo" to "Copenhagen, Denmark", "Hannah Busing" to "Kyiv, Ukraine", "Madison Lavern" to "Copenhagen, Denmark", "Mika laPetri" to "Madrid, Spain", "Mike Clark" to "Boston, Usa", "Seth Doyle" to "London, England")
+    val usernamesBottom = arrayOf(
+        "Cesar Rincon",
+        "Clem Onojeghuo",
+        "Hannah Busing",
+        "Madison Lavern",
+        "Mika laPetri",
+        "Mike Clark",
+        "Seth Doyle"
+    )
+    val userIconsMapBottom = mapOf(
+        "Cesar Rincon" to R.drawable.cesar_rincon,
+        "Clem Onojeghuo" to R.drawable.clem_onojeghuo,
+        "Hannah Busing" to R.drawable.hannah_busing,
+        "Madison Lavern" to R.drawable.madison_lavern,
+        "Mika laPetri" to R.drawable.mika_lapetri,
+        "Mike Clark" to R.drawable.mike_clark,
+        "Seth Doyle" to R.drawable.seth_doyle
+    )
+    val connectionsMapBottom = mapOf(
+        "Cesar Rincon" to "By invite",
+        "Clem Onojeghuo" to "Copenhagen, Denmark",
+        "Hannah Busing" to "Kyiv, Ukraine",
+        "Madison Lavern" to "Copenhagen, Denmark",
+        "Mika laPetri" to "Madrid, Spain",
+        "Mike Clark" to "Boston, Usa",
+        "Seth Doyle" to "London, England"
+    )
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentNetworkBinding.bind(view)
+
+
+        binding.inviteBtn.setOnClickListener {
+            findNavController().navigate(R.id.fragmentInvite)
+        }
 
         // Fills out the Recents-list with small cards
         for (username in usernamesRecents) {
@@ -58,14 +104,15 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
 
 
         /**
-            Setup of search bar
+        Setup of search bar
          */
         var searchview = binding.searchView
 
-        searchview.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {
                 TODO("Not yet implemented")
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 // Cast cardContainer as ViewGroup to access removeAllViews()
                 val cardContainerVG = binding.cardContainerBottom as ViewGroup
@@ -82,13 +129,22 @@ class NetworkFragment : Fragment(R.layout.fragment_network)  {
                 val dp = 30
                 val pixels = (dp * scale + 0.5f)
                 transparentBar.height = pixels.toInt()
-                transparentBar.background = ResourcesCompat.getDrawable(resources, R.drawable.transparent_spacer, context?.theme)
+                transparentBar.background = ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.transparent_spacer,
+                    context?.theme
+                )
                 cardContainerVG.addView(transparentBar)
 
                 //Filter List based on search criteria
                 var filteredUsernamesList = ArrayList<String>()
-                if (newText!= null) {
-                    filteredUsernamesList = usernamesBottom.filter { it.contains(newText, ignoreCase = true) } as ArrayList<String>
+                if (newText != null) {
+                    filteredUsernamesList = usernamesBottom.filter {
+                        it.contains(
+                            newText,
+                            ignoreCase = true
+                        )
+                    } as ArrayList<String>
 
                 }
 

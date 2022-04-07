@@ -18,6 +18,8 @@ import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intree.development.R
@@ -34,51 +36,29 @@ class MainActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var bottomNavigationView: BottomNavigationView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        initNavController()
 
         val context = applicationContext
 
-        val networkFragment = NetworkFragment()
-        val introductionsFragment = IntroductionsFragment()
-        val inboxFragment = InboxFragment()
-        val exploreFragment = ExploreFragment()
-
         //Can't get it to work with binding
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        val scaledBottomNavIconPressed = context.scaledDrawableResources(R.drawable.ic_btn_nav_bar_center_pressed, R.dimen.design_fab_image_size, R.dimen.design_fab_image_size)
+        val scaledBottomNavIconPressed = context.scaledDrawableResources(
+            R.drawable.ic_btn_nav_bar_center_pressed,
+            R.dimen.design_fab_image_size,
+            R.dimen.design_fab_image_size
+        )
 
-
-        bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.bottomTabNetwork -> {
-                    setCurrentFragment(networkFragment)
-                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
-                }
-                R.id.bottomTabIntroduce -> {
-                    setCurrentFragment(introductionsFragment)
-                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
-                }
-                R.id.bottomTabProfile -> {
-                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
-                }
-                R.id.bottomTabInbox -> {
-                    setCurrentFragment(inboxFragment)
-                    fab.setImageResource(R.drawable.ic_btn_nav_bar_center)
-                }
-            }
-            true
-        }
-
-        fab.setOnClickListener {
-            setCurrentFragment(exploreFragment)
-            bottomNavigationView.selectedItemId = R.id.bottomTabExplore
-            fab.setImageDrawable(scaledBottomNavIconPressed)
+        binding.fab.setOnClickListener {
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
+            binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
+            navHostFragment.navController.popBackStack()
+            navHostFragment.navController.navigate(R.id.bottomTabExplore)
+            binding.fab.setImageDrawable(scaledBottomNavIconPressed)
         }
 
         // Makes the status bar white TODO: Only works when sign up flow is done
@@ -91,15 +71,6 @@ class MainActivity : FragmentActivity() {
         }
     }
 
-    private fun setCurrentFragment(fragment: Fragment) {
-        if (fragment != null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.main_host_fragment, fragment)
-            transaction.commit()
-        }
-    }
-
-
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
 
         if (event!!.action == MotionEvent.ACTION_DOWN) {
@@ -107,7 +78,7 @@ class MainActivity : FragmentActivity() {
             if (view is EditText) {
                 val outRect = Rect()
                 view.getGlobalVisibleRect(outRect)
-                if (!outRect.contains(event?.rawX.toInt(), event.rawY.toInt())) {
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
                     view.clearFocus()
                     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
@@ -117,7 +88,11 @@ class MainActivity : FragmentActivity() {
         return super.dispatchTouchEvent(event)
     }
 
-    fun Context.scaledDrawableResources(@DrawableRes id: Int, @DimenRes width: Int, @DimenRes height: Int): Drawable {
+    fun Context.scaledDrawableResources(
+        @DrawableRes id: Int,
+        @DimenRes width: Int,
+        @DimenRes height: Int
+    ): Drawable {
         val w = resources.getDimension(width).toInt()
         val h = resources.getDimension(height).toInt()
         return scaledDrawable(id, w, h)
@@ -127,5 +102,11 @@ class MainActivity : FragmentActivity() {
         val bmp = BitmapFactory.decodeResource(resources, id)
         val bmpScaled = Bitmap.createScaledBitmap(bmp, width, height, false)
         return BitmapDrawable(resources, bmpScaled)
+    }
+
+    private fun initNavController() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
+        binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
     }
 }
