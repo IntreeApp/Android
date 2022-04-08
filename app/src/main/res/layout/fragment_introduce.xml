@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnInvite"
+        android:id="@+id/btnHistory"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="18dp"
@@ -54,11 +54,12 @@
         app:riv_tile_mode="repeat" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/hands"
+        android:text="🤝"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgRoundedProfilePhoto"
         app:layout_constraintEnd_toStartOf="@+id/imgRoundedFriend"
         app:layout_constraintStart_toEndOf="@+id/imgRoundedProfilePhoto"
@@ -129,34 +130,57 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edtMessage"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputMessage"
                 android:layout_width="match_parent"
-                android:layout_margin="16dp"
-                android:layout_height="0dp"
-                android:background="@color/white"
-                android:focusable="false"
-                android:gravity="center_horizontal"
-                android:maxLength="55"
-                android:maxLines="3"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:boxStrokeColor="#FFF"
+                app:boxBackgroundColor="#FFF"
+                android:backgroundTint="@color/white"
+                android:focusableInTouchMode="true"
+                android:padding="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvTips"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:id="@+id/tvIntroduction"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:elevation="1dp"-->
-<!--                android:gravity="center_horizontal"-->
-<!--                android:padding="8dp"-->
-<!--                android:text=""-->
-<!--                android:textSize="16sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:gravity="start"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:textColor="#9A9A9A"
+                    android:textColorHighlight="@color/text"
+                    android:textCursorDrawable="@drawable/custom_cursor"
+                    app:layout_constraintBottom_toTopOf="@+id/appCompatTextView"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatTextView16"
+                    app:layout_constraintStart_toStartOf="@+id/appCompatTextView16" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--                android:id="@+id/tvIntroduction"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:elevation="1dp"-->
+            <!--                android:gravity="center_horizontal"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:text=""-->
+            <!--                android:textSize="16sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTips"

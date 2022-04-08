@@ -67,6 +67,7 @@
     <string name="invite_plus">Invite +</string>
     <string name="invite">Invite</string>
     <string name="go_back">Go back</string>
+    <string name="back">Back</string>
     <string name="search_from">Search from your phonebook</string>
     <string name="choose_your">Choose your</string>
     <string name="rooms">Rooms</string>
@@ -81,5 +82,7 @@
     <string name="history">History</string>
     <string name="tap_to_select">Tap to Select</string>
     <string name="new_group">New Group</string>
+    <string name="by_invite">By invite</string>
+    <string name="explore">Explore</string>
 
 </resources>

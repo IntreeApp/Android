@@ -19,6 +19,7 @@
 
     <color name="purple">#6974DB</color>
 
+    <color name="background_intree_semi_transparent">#00f8f8f8</color>
     <color name="primary_purple_half_filled">#B47F77CC</color>
     <color name="primary_blue_half_filled">#AD6974DB</color>
     <color name="backgrounds">#FFf9f9f9</color>

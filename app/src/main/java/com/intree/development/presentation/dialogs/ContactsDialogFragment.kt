@@ -12,8 +12,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -54,6 +57,18 @@ class ContactsDialogFragment : DialogFragment(), IContacts {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ActivityCompat.requestPermissions(
+            requireActivity(),
+            permissionArray,
+            requestContactCode
+        )
+        if (allPermissionsGranted()) {
+            binding.progressBar.visibility = View.VISIBLE
+            inviteVm.getContacts(requireContext())
+            initAdapter()
+        } else {
+            dialog?.cancel()
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -151,6 +166,21 @@ class ContactsDialogFragment : DialogFragment(), IContacts {
                 }
             }
         })
+    }
+
+    private fun initToggle() {
+        binding.rgToggle.setOnCheckedChangeListener { radioGroup, i ->
+            val rb = radioGroup[i] as RadioButton
+
+            when (i) {
+                0 -> {
+                    rb.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                }
+                1 -> {
+
+                }
+            }
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
