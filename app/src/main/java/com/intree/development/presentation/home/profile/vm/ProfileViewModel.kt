@@ -24,15 +24,18 @@ class ProfileViewModel @Inject constructor() : ViewModel() {
 
     var isSignUpFlowFinished: Boolean = false
 
+    var photoCode = -1
+
     fun getProfile() {
         FirebaseDatabase.getInstance().reference.child("users").child(
-            FirebaseAuth.getInstance().uid!!)
+            FirebaseAuth.getInstance().uid!!
+        )
             .get().addOnSuccessListener {
                 //Log.i("firebase", "Got value ${it.value}")
                 _userEntity.value = it.getValue(UserProfileEntity::class.java)
-        }.addOnFailureListener {
-            Log.e("PROFILE", "Error getting PROFIlE", it)
-        }
+            }.addOnFailureListener {
+                Log.e("PROFILE", "Error getting PROFIlE", it)
+            }
     }
 
     fun updateProfile(user: UserProfileEntity) {
@@ -45,18 +48,22 @@ class ProfileViewModel @Inject constructor() : ViewModel() {
 
     fun getOwnRooms() {
         FirebaseDatabase.getInstance().reference.child("users").child(
-            FirebaseAuth.getInstance().uid!!)
+            FirebaseAuth.getInstance().uid!!
+        )
             .child("data")
             .child("showroom")
             .get().addOnSuccessListener { dataSnap ->
                 //Log.i("firebase", "Got value ${it.value}")
-                _ownRooms.value = dataSnap.children.filter { it.getValue(RoomEntity::class.java)!!.draft == "NO" }
-                    .map {
-                    RoomEntityForPreview(firebaseId = it.key as String,
-                    title = it.getValue(RoomEntity::class.java)!!.title,
-                    backgroundURL = it.getValue(RoomEntity::class.java)!!.cover,
-                    logoURL = it.getValue(RoomEntity::class.java)!!.logo)
-                }
+                _ownRooms.value =
+                    dataSnap.children.filter { it.getValue(RoomEntity::class.java)!!.draft == "NO" }
+                        .map {
+                            RoomEntityForPreview(
+                                firebaseId = it.key as String,
+                                title = it.getValue(RoomEntity::class.java)!!.title,
+                                backgroundURL = it.getValue(RoomEntity::class.java)!!.cover,
+                                logoURL = it.getValue(RoomEntity::class.java)!!.logo
+                            )
+                        }
             }.addOnFailureListener {
                 Log.e("ROOM", "Error getting OWN ROOM DATA", it)
             }

@@ -39,12 +39,12 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
     private fun initContent() {
         Glide.with(requireContext())
             .load(R.drawable.ic_no_photo)
-            .override(150, 150)
+            .override(200, 200)
             .into(binding.imgRoundedProfilePhoto)
 
         Glide.with(requireContext())
             .load(R.drawable.ic_ellipse_84)
-            .override(150, 150)
+            .override(200, 200)
             .into(binding.imgRoundedFriend)
 
         initOnClickListeners()

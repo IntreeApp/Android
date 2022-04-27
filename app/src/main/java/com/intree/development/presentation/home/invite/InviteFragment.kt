@@ -96,7 +96,7 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         ScanContract()
     ) { result: ScanIntentResult ->
         if (result.contents == null) {
-           // Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
+            // Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
         } else {
             result.contents
 

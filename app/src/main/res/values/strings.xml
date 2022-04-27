@@ -84,5 +84,16 @@
     <string name="new_group">New Group</string>
     <string name="by_invite">By invite</string>
     <string name="explore">Explore</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="identities">Identities</string>
+    <string name="mange_your_appearance">Manage your appearance</string>
+    <string name="benefits">Benefits</string>
+    <string name="only_visible_to_you">Only visible to you</string>
+    <string name="benefit">Benefit</string>
+    <string name="title">Title</string>
+    <string name="create">Create</string>
+    <string name="aspects">Aspects</string>
+    <string name="add_new"><![CDATA[Add new >]]></string>
+
 
 </resources>

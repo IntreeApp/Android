@@ -1,105 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.auth.AuthActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F8F8F8"
         tools:context=".presentation.home.profile.ProfileEditModeFragment">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/profileCoverImg"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/logo"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile_header_default_img"
+            android:layout_height="0dp"
+            android:background="@drawable/cover_profileowner"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imgProfilePhotoPreview"
-            android:layout_width="140dp"
-            android:layout_height="115dp"
-            android:layout_marginTop="112dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:elevation="2dp"
-            android:scaleType='centerCrop'
-            android:src="@drawable/profile_header_default_img"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/unsplash_profile_none_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/profileCoverImg"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_border_color="@color/white"
-            app:riv_border_width="1dp"
-            app:riv_corner_radius="10dp"
-            app:riv_mutate_background="false"
-            app:riv_oval="false"
-            app:riv_tile_mode="repeat" />
+            app:layout_constraintVertical_bias="0.165"
+            app:riv_border_width="0dp"
+            app:riv_oval="true" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/addUserPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:src="@drawable/camera_fill"
+            app:layout_constraintBottom_toBottomOf="@+id/imgProfilePhotoPreview"
+            app:layout_constraintEnd_toEndOf="@+id/imgProfilePhotoPreview"
+            app:layout_constraintStart_toStartOf="@+id/imgProfilePhotoPreview"
+            app:layout_constraintTop_toTopOf="@+id/imgProfilePhotoPreview" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/addBackgroundPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:src="@drawable/camera_fill"
+            app:layout_constraintBottom_toBottomOf="@+id/profileCoverImg"
+            app:layout_constraintEnd_toEndOf="@+id/profileCoverImg" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEditProfile"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="80dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="12.5dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/btn_rounded_outlined_light"
-            android:elevation="3dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/edit"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_blue"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileCoverImg" />
-
-        <TextView
-            android:id="@+id/tvUserFullName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="62dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_outlined_light"
+            android:elevation="0dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="-"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/edit_profile"
+            android:textAllCaps="false"
+            android:textColor="#484848"
+            android:textSize="12sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileCoverImg"/>
+            app:layout_constraintHeight_percent="0.042"
+            app:layout_constraintTop_toBottomOf="@+id/profileCoverImg" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserFullName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:padding="2dp"
+            android:text="Michael Anderson"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditProfile"
+            app:layout_constraintStart_toStartOf="@+id/imgProfilePhotoPreview"
+            app:layout_constraintTop_toBottomOf="@+id/imgProfilePhotoPreview" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRoomsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/rooms_title"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/aspects"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvUserFullName"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserFullName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="@string/add_new"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/btnEditProfile"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserFullName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMangeYourAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/mange_your_appearance"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/tvRoomsTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvRoomsTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIdentities"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileCoverImg"/>
+            app:layout_constraintHeight_percent="0.18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMangeYourAppearance" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vpRooms"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginTop="90dp"
-            app:layout_constraintTop_toBottomOf="@id/tvUserFullName">
-        </androidx.viewpager2.widget.ViewPager2>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/benefits"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvMangeYourAppearance"
+            app:layout_constraintTop_toBottomOf="@+id/rvIdentities" />
 
-        <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/vpRoomsIndicator"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            app:layout_constraintTop_toBottomOf="@id/vpRooms"
-            app:ci_drawable="@drawable/btn_dark_rounded"
-            app:ci_drawable_unselected="@drawable/btn_rounded_outlined_light"
-            android:layout_marginTop="10dp"/>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/only_visible_to_you"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv2"
+            app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBenefits"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="128dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>

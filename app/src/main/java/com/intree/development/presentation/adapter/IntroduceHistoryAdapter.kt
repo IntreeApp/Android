@@ -39,12 +39,12 @@ class IntroduceHistoryAdapter(private val listener: IintroduceHistory) :
 
             Glide.with(context)
                 .load(model.myImage)
-                .override(150, 150)
+                .override(200, 200)
                 .into(itemBinding.imgRoundedProfilePhoto)
 
             Glide.with(context)
                 .load(model.friendImage)
-                .override(150, 150)
+                .override(200, 200)
                 .into(itemBinding.imgRoundedFriend)
 
             itemBinding.tvFriendName.text = model.friendName

@@ -61,7 +61,7 @@ class ProfileEditModeFragment : Fragment() {
         _binding?.ciProfileAvatar?.isVisible = false
         _binding?.ciProfileCover?.isVisible = false
 
-        viewModel.userEntity.observe(viewLifecycleOwner, {
+        viewModel.userEntity.observe(viewLifecycleOwner) {
 
             Log.d("SHOWROOM", "------ PROFILE CHECK 111 : ${profile.data.toString()}")
 
@@ -73,9 +73,10 @@ class ProfileEditModeFragment : Fragment() {
                 Picasso.get().load(profile.data.photo.photo).into(_binding?.profileChangeCoverImg)
             }
             if (profile.data.photo.photoLight.isNotEmpty()) {
-                Picasso.get().load(profile.data.photo.photoLight).into(_binding?.imgRoundedProfilePhoto)
+                Picasso.get().load(profile.data.photo.photoLight)
+                    .into(_binding?.imgRoundedProfilePhoto)
             }
-        })
+        }
 
         viewModel.getProfile()
 
