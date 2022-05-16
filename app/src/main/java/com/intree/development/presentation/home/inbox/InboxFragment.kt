@@ -1,5 +1,6 @@
 package com.intree.development.presentation.home.inbox
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -15,6 +16,7 @@ import com.intree.development.domain.ReadMessage
 import com.intree.development.domain.UnreadMessage
 import com.intree.development.R
 import com.intree.development.presentation.adapter.InboxMessageAdapter
+import com.intree.development.presentation.home.create_group.CreateGroupActivity
 
 class InboxFragment : Fragment(R.layout.fragment_inbox)  {
 
@@ -33,6 +35,11 @@ class InboxFragment : Fragment(R.layout.fragment_inbox)  {
         addGroupCard("BJJ", R.drawable.bjj)
         addGroupCard("Crypto", R.drawable.crypto)
         addGroupCard("Fashion", R.drawable.fashion)
+
+        binding.btnNewGroup.setOnClickListener{
+            val intent = Intent(requireContext(), CreateGroupActivity::class.java)
+            startActivity(intent)
+        }
 
         findView()
         initMessageList()
@@ -119,26 +126,4 @@ class InboxFragment : Fragment(R.layout.fragment_inbox)  {
 
         binding.cardContainerGroups.addView(view)
     }
-
-    /*
-    // https://www.youtube.com/watch?v=__gxd4IKVvk Nået til 17.30
-    inner class
-
-    inner class UnreadMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var avatar: RoundedImageView = itemView.findViewById(R.id.unreadMessageAvatar)
-        private var name: TextView = itemView.findViewById(R.id.unreadMessageName)
-        private var content: TextView = itemView.findViewById(R.id.unreadMessageContent)
-        private var timestamp: TextView = itemView.findViewById(R.id.unreadMessageTimestamp)
-
-        fun updateMessage(message: Message) {
-            //Needs a check for avatar not null
-            avatar.setImageDrawable(message.avatar)
-            name.text = message.sender
-            content.text = message.content
-            timestamp.text = message.timestamp
-        }
-
-    }
-
-    */
 }

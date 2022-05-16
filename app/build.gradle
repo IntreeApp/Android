@@ -123,6 +123,6 @@ dependencies {
     //Shimmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
-    //Image Picker
-    implementation 'com.github.esafirm:android-image-picker:3.0.0-beta1'
+    def lottieVersion = "5.0.3"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

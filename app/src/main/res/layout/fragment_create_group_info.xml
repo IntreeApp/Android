@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Back"
+        android:textColor="@color/text"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="@string/group_info"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="240dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="8dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUploadCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_purple"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/upload_a_group_cover"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:backgroundTint="@null"
+            app:iconTint="@color/white"
+            app:icon="@drawable/ic_image"
+            app:iconGravity="textStart"
+            app:iconSize="25dp"
+            android:textAllCaps="false"/>
+
+        <ImageView
+            android:id="@+id/uploadGroupCoverImageView"
+            android:src="@drawable/btn_select_group_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+
+            />
+    </androidx.cardview.widget.CardView>-->
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/uploadGroupCoverImageView"
+        android:src="@drawable/btn_select_group_cover"
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="60dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="104dp"
+        android:drawableEnd="@drawable/ic_baseline_edit_24"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:hint="@string/create_a_group_title"
+        android:inputType="text"
+        android:theme="@style/EditTextTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadGroupCoverImageView" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_large"
+        android:fontFamily="@font/montserrat_bold"
+        android:includeFontPadding="false"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/continue_short"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
