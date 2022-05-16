@@ -94,6 +94,15 @@
     <string name="create">Create</string>
     <string name="aspects">Aspects</string>
     <string name="add_new"><![CDATA[Add new >]]></string>
+    <string name="from">From:</string>
+    <string name="added_to_preferred_posts">Added to preferred posts</string>
+    <string name="do_not_show_this_again">do not show this again</string>
+    <string name="posts_will_now_be_displayed_at_the_top">posts will now be displayed at the top</string>
+    <string name="favourites">Favourites</string>
+    <string name="report">Report</string>
+    <string name="mute_all_posts_from_generic_name">Mute all posts from “Generic name”</string>
+    <string name="subscribe_to_updates">Subscribe to updates</string>
+    <string name="mute_posts_from_aspect">Mute posts from “Aspect”</string>
 
 
 </resources>

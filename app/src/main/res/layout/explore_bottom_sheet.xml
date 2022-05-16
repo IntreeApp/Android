@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F2F2F2">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFavourites"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/ic_btn_favourites"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="@string/favourites"
+        android:textAllCaps="false"
+        android:textColor="@color/text"
+        android:textSize="12sp"
+        app:backgroundTint="#D8D8D8"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#D8D8D8" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnIntroduce"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_introduceinactive"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="@string/introduce"
+        android:textAllCaps="false"
+        android:textColor="@color/text"
+        android:textSize="12sp"
+        app:backgroundTint="#D8D8D8"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnReport"
+        app:layout_constraintStart_toEndOf="@+id/btnFavourites"
+        app:layout_constraintTop_toTopOf="@+id/btnFavourites"
+        app:rippleColor="#D8D8D8" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReport"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.25"
+        android:layout_marginEnd="16dp"
+        android:drawableTop="@drawable/ic_alarm_light"
+        android:padding="8dp"
+        android:text="@string/report"
+        android:textAllCaps="false"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        app:backgroundTint="#D8D8D8"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnIntroduce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnIntroduce"
+        app:rippleColor="#D8D8D8" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvSubscribe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#D8D8D8"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnReport"
+        app:layout_constraintStart_toStartOf="@+id/btnFavourites"
+        app:layout_constraintTop_toBottomOf="@+id/btnIntroduce">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swSubscribeToUpdates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSubscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/subscribe_to_updates"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/swSubscribeToUpdates"
+                app:layout_constraintStart_toEndOf="@+id/swSubscribeToUpdates"
+                app:layout_constraintTop_toTopOf="@+id/swSubscribeToUpdates" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#D8D8D8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnReport"
+        app:layout_constraintStart_toStartOf="@+id/btnFavourites"
+        app:layout_constraintTop_toBottomOf="@+id/cvSubscribe">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/mute_all_posts_from_generic_name"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/ivLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="16dp"
+                android:background="#c4c4c4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/mute_posts_from_aspect"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLine" />
+
+            <View
+                android:id="@+id/ivLine2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="16dp"
+                android:background="#c4c4c4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
