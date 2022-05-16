@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="8dp">
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewCheckable"
+        android:layout_width="124dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:checkable="true"
+        android:focusable="true"
+        app:strokeColor="@color/checkable_group_card_color"
+        app:strokeWidth="3dp"
+
+        app:checkedIconTint="@color/green_focus"
+        app:rippleColor="@color/green_focus"
+        app:cardCornerRadius="5dp"
+        android:outlineAmbientShadowColor="@color/green_focus"
+        >
+
+                <ImageView
+                    android:id="@+id/ivCardGroupsCheckable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/bjj" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/nameCardGroupsCheckable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center_horizontal"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp"
+            android:text="BJJ"
+            android:textStyle="bold" />
+
+</LinearLayout>

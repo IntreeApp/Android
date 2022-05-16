@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_group_graph"
+    app:startDestination="@id/createGroupInfoFragment">
+    <fragment
+        android:id="@+id/createGroupInfoFragment"
+        android:name="com.intree.development.presentation.home.create_group.CreateGroupInfoFragment"
+        android:label="fragment_create_group_info"
+        tools:layout="@layout/fragment_create_group_info" >
+        <action
+            android:id="@+id/action_createGroupInfoFragment_to_createGroupFragment"
+            app:destination="@id/createGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupFragment"
+        android:name="com.intree.development.presentation.home.create_group.CreateGroupFragment"
+        android:label="fragment_create_group"
+        tools:layout="@layout/fragment_create_group" >
+        <action
+            android:id="@+id/action_createGroupFragment_to_createGroupDoneFragment"
+            app:destination="@id/createGroupDoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupDoneFragment"
+        android:name="com.intree.development.presentation.home.create_group.CreateGroupDoneFragment"
+        android:label="fragment_create_group_done"
+        tools:layout="@layout/fragment_create_group_done" />
+</navigation>

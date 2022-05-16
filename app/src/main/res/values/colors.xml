@@ -27,5 +27,6 @@
     <color name="text">#FF484848</color>
     <color name="text_bold_gray">#FF5C5C5C</color>
     <color name="black_50_percent">#80000000</color>
+    <color name="green_focus">#5FD07F</color>
 
 </resources>

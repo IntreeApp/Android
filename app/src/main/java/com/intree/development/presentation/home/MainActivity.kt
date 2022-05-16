@@ -54,6 +54,16 @@ class MainActivity : FragmentActivity() {
             binding.fab.setImageDrawable(scaledBottomNavIconPressed)
         }
 
+        // Check if user has just created a group. In that case, navigate to inbox
+        val intent = intent
+        if (intent.hasExtra("groupCreated")) {
+            val hasCreatedGroup = intent.getBooleanExtra("groupCreated", false)
+            if (hasCreatedGroup) {
+                binding.bottomNavigationView.selectedItemId = R.id.bottomTabInbox
+            }
+
+        }
+
         // Makes the status bar white TODO: Only works when sign up flow is done
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            val w: Window = window
