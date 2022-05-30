@@ -6,28 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="20dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp">
-    <!--tools:context=".NetworkFragment"-->
 
+    >
 
-    <!-- TextView to display when given search has no results
-    <TextView
-        android:id="@+id/tv_emptyTextView"
-        android:layout_width="wrap_content"
+    <!--<include
+        android:id="@+id/fragmentNetworkPopup"
+        layout="@layout/fragment_network_popup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="No results"
-        android:textSize="20sp"
-        android:visibility="gone" />
-        -->
+        android:visibility="gone"/>-->
+
+
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="5dp">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -65,9 +61,11 @@
         android:layout_width="80dp"
         android:layout_height="35dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:background="@drawable/btn_purple_rounded"
         android:drawableEnd="@drawable/ic_baseline_add_24"
+
         android:includeFontPadding="false"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -86,6 +84,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTopFragment"
@@ -129,7 +129,6 @@
             app:layout_constraintStart_toStartOf="parent">
 
 
-
             <LinearLayout
                 android:id="@+id/cardContainerBottom"
                 android:layout_width="match_parent"
@@ -140,10 +139,11 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recents"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Recents"
                     android:textColor="@color/text"
                     android:textStyle="bold"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
@@ -151,7 +151,9 @@
                     android:id="@+id/horizontalScrollView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
                     android:fillViewport="true"
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -163,9 +165,9 @@
                         android:id="@+id/cardContainerRecents"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:orientation="horizontal"
                         android:fontFamily="@font/montserrat_bold"
+                        android:orientation="horizontal"
+
                         app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

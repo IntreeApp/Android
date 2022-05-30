@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.home.network.NetworkPopupFragment"
+
+    >
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:cardCornerRadius="15dp"
+            >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/avatarImageViewNetworkPopup"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:src="@drawable/seth_doyle"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:riv_corner_radius="50dp" />
+
+                                                                        <!--nameTextviewPopup-->
+                        <TextView
+                            android:id="@+id/nameTextviewPopup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="28dp"
+                            android:fontFamily="@font/montserrat_extra_bold"
+                            android:text="Seth Doyle"
+                            android:textColor="@color/text"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/avatarImageViewNetworkPopup"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                                        <!--updateSettingsStringTextView-->
+
+                        <TextView
+                            android:id="@+id/updateSettingsStringTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Update settings"
+                            android:textSize="8sp"
+                            app:layout_constraintStart_toEndOf="@+id/avatarImageViewNetworkPopup"
+                            app:layout_constraintTop_toBottomOf="@+id/nameTextviewPopup" />
+
+                                                                        <!--saveBtn-->
+
+                        <Button
+                            android:id="@+id/saveBtn"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/btn_purple_rounded"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="10dp"
+                            android:gravity="center"
+                            android:text="@string/save"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:backgroundTint="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                                                                                <!--aspectsStringTextView-->
+
+                        <TextView
+                            android:id="@+id/aspectsStringTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="start"
+                            android:paddingStart="16dp"
+                            android:text="@string/aspects"
+                            android:textColor="@color/text"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/avatarImageViewNetworkPopup" />
+
+                                                                                <!--aspectsHorizontalScrollView-->
+
+                        <HorizontalScrollView
+                            android:id="@+id/aspectsHorizontalScrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fillViewport="true"
+                            android:scrollbars="none"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/aspectsStringTextView">
+
+                                <LinearLayout
+                                    android:id="@+id/aspectsScrollView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/titleTopFragment">
+
+                                </LinearLayout>
+
+                        </HorizontalScrollView>
+
+                                                                                <!--benefitsStringTextView-->
+
+
+                        <TextView
+                            android:id="@+id/benefitsStringTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="start"
+                            android:paddingStart="16dp"
+                            android:text="@string/benefits"
+                            android:textColor="@color/text"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toBottomOf="@+id/aspectsHorizontalScrollView"
+
+                             />
+
+                                                                                <!--benefitsHorizontalScrollView-->
+
+                        <HorizontalScrollView
+                            android:id="@+id/benefitsHorizontalScrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fillViewport="true"
+                            android:scrollbars="none"
+                            app:layout_constraintTop_toBottomOf="@+id/benefitsStringTextView"
+                            >
+
+                                <LinearLayout
+                                    android:id="@+id/benefitsCardContainer"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    >
+
+                                </LinearLayout>
+
+                        </HorizontalScrollView>
+
+
+
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                
+
+
+                
+        </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

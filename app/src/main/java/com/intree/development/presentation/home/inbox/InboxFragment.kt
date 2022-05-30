@@ -116,7 +116,7 @@ class InboxFragment : Fragment(R.layout.fragment_inbox)  {
     }
 
     private fun addGroupCard(name: String, imageResource: Int) {
-        val view = layoutInflater.inflate(R.layout.inbox_card_groups, null)
+        val view = layoutInflater.inflate(R.layout.card_inbox_groups, null)
 
         val nameView = view.findViewById<TextView>(R.id.nameCardGroups)
         val imageView = view.findViewById<ImageView>(R.id.ivCardGroups)

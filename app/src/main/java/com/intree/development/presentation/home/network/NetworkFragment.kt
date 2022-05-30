@@ -3,82 +3,64 @@ package com.intree.development.presentation.home.network
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.findNavController
 import com.intree.development.databinding.FragmentNetworkBinding
 import com.intree.development.R
-import com.intree.development.domain.UserDataEntity
+import com.intree.development.databinding.NetworkCardWideBinding
 
 
 class NetworkFragment : Fragment(R.layout.fragment_network) {
 
 
     private lateinit var binding: FragmentNetworkBinding
+    //private lateinit var bindingWideCard: NetworkCardWideBinding
 
 
     // Mock DB for filling out Recents-scrollview
-    val usernamesRecents = arrayOf(
-        "Amir Khan",
-        "Art Peterson",
-        "Janko Pascal",
-        "Julian Joyce",
-        "Imansyah XX",
-        "Jessica Hansson",
-        "Jon Buckley"
-    )
-    val userIconsMapRecents = mapOf(
-        "Amir Khan" to R.drawable.amir,
-        "Art Peterson" to R.drawable.art,
-        "Imansyah XX" to R.drawable.imansyah,
-        "Janko Pascal" to R.drawable.janko,
-        "Jessica Hansson" to R.drawable.jessica,
-        "Jon Buckley" to R.drawable.jonathan,
-        "Julian Joyce" to R.drawable.julian
-    )
+    val usernamesRecents = getUsernamesRecentsData()
+    val userIconsMapRecents = getUserIconsMapRecentsData()
 
     // Mock DB for filling out bottom-scrollview
-    val usernamesBottom = arrayOf(
-        "Cesar Rincon",
-        "Clem Onojeghuo",
-        "Hannah Busing",
-        "Madison Lavern",
-        "Mika laPetri",
-        "Mike Clark",
-        "Seth Doyle"
-    )
-    val userIconsMapBottom = mapOf(
-        "Cesar Rincon" to R.drawable.cesar_rincon,
-        "Clem Onojeghuo" to R.drawable.clem_onojeghuo,
-        "Hannah Busing" to R.drawable.hannah_busing,
-        "Madison Lavern" to R.drawable.madison_lavern,
-        "Mika laPetri" to R.drawable.mika_lapetri,
-        "Mike Clark" to R.drawable.mike_clark,
-        "Seth Doyle" to R.drawable.seth_doyle
-    )
-    val connectionsMapBottom = mapOf(
-        "Cesar Rincon" to "By invite",
-        "Clem Onojeghuo" to "Copenhagen, Denmark",
-        "Hannah Busing" to "Kyiv, Ukraine",
-        "Madison Lavern" to "Copenhagen, Denmark",
-        "Mika laPetri" to "Madrid, Spain",
-        "Mike Clark" to "Boston, Usa",
-        "Seth Doyle" to "London, England"
-    )
+    val usernamesBottom = getUsernamesBottomData()
+    val userIconsMapBottom = getUserIconsMapBottomData()
+    val connectionsMapBottom = getConnectionsMapBottomData()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentNetworkBinding.bind(view)
+        // bindingWideCard = NetworkCardWideBinding.bind(view)
+
+
+
+
+
+
+        //-------------- SETTING  ONCLICKLISTENERS --------------//
 
 
         binding.inviteBtn.setOnClickListener {
+
             findNavController().navigate(R.id.fragmentInvite)
+
         }
+
+        binding.qrIcon.setOnClickListener{
+
+        }
+
+        //-------------- Fill out Card Containers --------------//
+
 
         // Fills out the Recents-list with small cards
         for (username in usernamesRecents) {
@@ -101,6 +83,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
 
         // Adds special wide card at the bottom to compensate for the view overflow
         addWideCardBottomSpacer()
+
 
 
         /**
@@ -179,19 +162,8 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
 
         })
 
-        // Transition to alternative fragment when qrIcon is pushed
-        /*
-        _binding.qrIcon.setOnClickListener{
-            val fragment = NetworkAltFragment()
-            val manager = parentFragmentManager
-            val transaction = manager.beginTransaction()
-            transaction.replace(
-                R.id.main_host_fragment, fragment
-            )
-            transaction.commit()
 
-        }
-        */
+
     }
 
     private fun addSmallCard(name: String, imageResource: Int) {
@@ -210,13 +182,26 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
     private fun addWideCard(name: String, imageResource: Int, connection: String) {
         val view = layoutInflater.inflate(R.layout.network_card_wide, null)
 
-        val nameView = view.findViewById<TextView>(R.id.tvNameWideCard)
-        val imageView = view.findViewById<ImageView>(R.id.ivWidecard)
-        val connectionView = view.findViewById<TextView>(R.id.tvConnectedContentWideCard)
+        val nameView = view.findViewById<TextView>(R.id.nameTextView)
+        val imageView = view.findViewById<ImageView>(R.id.avatarImageView)
+        val connectionView = view.findViewById<TextView>(R.id.connectedPurpleTextView)
+        val btnAddCircle = view.findViewById<ImageButton>(R.id.btnAddCircle)
 
         nameView.text = name
         imageView.setImageResource(imageResource)
         connectionView.text = connection
+
+        btnAddCircle.setOnClickListener{
+
+            findNavController().navigate(R.id.networkPopupFragment)
+
+        }
+
+        // Viewbinding setup
+        /*bindingWideCard.nameTextView.text = name
+        bindingWideCard.avatarImageView.setImageResource(imageResource)
+        bindingWideCard.connectedPurpleTextView.text = connection*/
+
 
         binding.cardContainerBottom.addView(view)
     }
@@ -224,8 +209,8 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
     private fun addWideCardBottomSpacer() {
         val view = layoutInflater.inflate(R.layout.network_card_wide_bottom_spacer, null)
 
-        val nameView = view.findViewById<TextView>(R.id.tvNameWideCard)
-        val imageView = view.findViewById<ImageView>(R.id.ivWidecard)
+        val nameView = view.findViewById<TextView>(R.id.nameTextView)
+        val imageView = view.findViewById<ImageView>(R.id.avatarImageView)
 
         nameView.text = "Intree"
         imageView.setImageResource(R.drawable.intree_logo)
@@ -234,21 +219,66 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
         binding.cardContainerBottom.addView(view)
     }
 
-    // For possible future use
-    /*
-    private fun addWideCardWithUserDataEntity(user: UserDataEntity) {
-        val view = layoutInflater.inflate(R.layout.network_card_wide, null)
 
-        val nameView = view.findViewById<TextView>(R.id.tvNameWideCard)
-        val imageView = view.findViewById<ImageView>(R.id.ivWidecard)
-        val connectionView = view.findViewById<TextView>(R.id.tvConnectedContentWideCard)
+    private fun getConnectionsMapBottomData(): Map<String, String> {
+        return mapOf(
+            "Cesar Rincon" to "By invite",
+            "Clem Onojeghuo" to "Copenhagen, Denmark",
+            "Hannah Busing" to "Kyiv, Ukraine",
+            "Madison Lavern" to "Copenhagen, Denmark",
+            "Mika laPetri" to "Madrid, Spain",
+            "Mike Clark" to "Boston, Usa",
+            "Seth Doyle" to "London, England"
+        )
+    }
 
-        nameView.text = user.fullName
-        imageView.setImageBitmap(user.photo.photo)
-        connectionView.text = user.metIn.toString()
+    private fun getUserIconsMapBottomData(): Map<String, Int> {
+        return mapOf(
+            "Cesar Rincon" to R.drawable.cesar_rincon,
+            "Clem Onojeghuo" to R.drawable.clem_onojeghuo,
+            "Hannah Busing" to R.drawable.hannah_busing,
+            "Madison Lavern" to R.drawable.madison_lavern,
+            "Mika laPetri" to R.drawable.mika_lapetri,
+            "Mike Clark" to R.drawable.mike_clark,
+            "Seth Doyle" to R.drawable.seth_doyle
+        )
+    }
 
-        _binding.cardContainerBottom.addView(view)
+    private fun getUsernamesBottomData(): Array<String> {
+
+        return arrayOf(
+            "Cesar Rincon",
+            "Clem Onojeghuo",
+            "Hannah Busing",
+            "Madison Lavern",
+            "Mika laPetri",
+            "Mike Clark",
+            "Seth Doyle"
+        )
+    }
+
+    private fun getUsernamesRecentsData(): Array<String> {
+
+        return arrayOf(
+            "Amir Khan",
+            "Art Peterson",
+            "Janko Pascal",
+            "Julian Joyce",
+            "Imansyah XX",
+            "Jessica Hansson",
+            "Jon Buckley"
+        )
+    }
+    private fun getUserIconsMapRecentsData(): Map<String, Int> {
+        return mapOf(
+            "Amir Khan" to R.drawable.amir,
+            "Art Peterson" to R.drawable.art,
+            "Imansyah XX" to R.drawable.imansyah,
+            "Janko Pascal" to R.drawable.janko,
+            "Jessica Hansson" to R.drawable.jessica,
+            "Jon Buckley" to R.drawable.jonathan,
+            "Julian Joyce" to R.drawable.julian
+        )
 
     }
-    */
 }
