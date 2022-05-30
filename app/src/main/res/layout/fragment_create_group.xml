@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/aspectTextView"
+        android:id="@+id/aspectsStringTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -74,7 +74,7 @@
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aspectTextView">
+        app:layout_constraintTop_toBottomOf="@+id/aspectsStringTextView">
 
         <LinearLayout
             android:id="@+id/cardContainerGroups"

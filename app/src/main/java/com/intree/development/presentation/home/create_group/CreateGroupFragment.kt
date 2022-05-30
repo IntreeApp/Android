@@ -31,11 +31,6 @@ class CreateGroupFragment: Fragment(R.layout.fragment_create_group) {
         binding = FragmentCreateGroupBinding.bind(view)
         mockDB = createMockDb()
         initContactList()
-        /*
-        checkedState = BooleanArray(mockDB.size)
-
-        println("checkedState: ${checkedState.size}")*/
-
 
         // Add New Group button as groups-card
         addCheckableGroupCard("BJJ", R.drawable.bjj)

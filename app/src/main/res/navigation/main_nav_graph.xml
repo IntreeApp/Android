@@ -138,6 +138,12 @@
         android:name="com.intree.development.presentation.home.explore.ExploreFragment"
         android:label="ExploreFragment"
         tools:layout="@layout/fragment_explore" />
+    <dialog
+        android:id="@+id/networkPopupFragment"
+        android:name="com.intree.development.presentation.home.network.NetworkPopupFragment"
+        android:label="fragment_network_popup"
+        tools:layout="@layout/fragment_network_popup" />
+
 
     <fragment
         android:id="@+id/creatingPostFragment"

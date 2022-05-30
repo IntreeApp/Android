@@ -8,7 +8,7 @@
         android:id="@+id/createGroupInfoFragment"
         android:name="com.intree.development.presentation.home.create_group.CreateGroupInfoFragment"
         android:label="fragment_create_group_info"
-        tools:layout="@layout/fragment_create_group_info" >
+         >
         <action
             android:id="@+id/action_createGroupInfoFragment_to_createGroupFragment"
             app:destination="@id/createGroupFragment" />
