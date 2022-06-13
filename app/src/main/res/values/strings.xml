@@ -103,6 +103,9 @@
     <string name="mute_all_posts_from_generic_name">Mute all posts from “Generic name”</string>
     <string name="subscribe_to_updates">Subscribe to updates</string>
     <string name="mute_posts_from_aspect">Mute posts from “Aspect”</string>
+    <string name="new_post">New Post</string>
+    <string name="add_media">Add media</string>
+    <string name="write_a_caption">Write a caption...</string>
 
 
 </resources>

@@ -139,4 +139,10 @@
         android:label="ExploreFragment"
         tools:layout="@layout/fragment_explore" />
 
+    <fragment
+        android:id="@+id/creatingPostFragment"
+        android:name="com.intree.development.presentation.home.createPost.CreatingPostFragment"
+        android:label="CreatingPostFragment"
+        tools:layout="@layout/fragment_creating_post" />
+
 </navigation>

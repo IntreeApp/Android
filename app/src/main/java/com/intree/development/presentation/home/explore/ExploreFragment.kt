@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.intree.development.R
 import com.intree.development.data.uiModels.ExploreImages
@@ -30,6 +31,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), IExplore {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+        initOnClickListeners()
     }
 
     private fun initAdapter() {
@@ -39,6 +41,12 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), IExplore {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvContent.layoutManager = layoutManager
         adapter.setData(setMockData())
+    }
+
+    private fun initOnClickListeners() {
+        binding.ivCreateNewPost.setOnClickListener {
+            findNavController().navigate(R.id.creatingPostFragment)
+        }
     }
 
     private fun setMockData(): ArrayList<ExploreUIModel> {
