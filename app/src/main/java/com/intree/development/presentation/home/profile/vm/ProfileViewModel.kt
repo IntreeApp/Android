@@ -26,7 +26,7 @@ class ProfileViewModel @Inject constructor() : ViewModel() {
 
     var photoCode = -1
 
-    fun getProfile() {
+fun getProfile() {
         FirebaseDatabase.getInstance().reference.child("users").child(
             FirebaseAuth.getInstance().uid!!
         )

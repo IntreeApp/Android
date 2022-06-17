@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottomTabNetwork"
+        android:id="@+id/networkFragment_"
         android:icon="@drawable/ic_network_tab_inactive"
         android:title="@string/network" />
 

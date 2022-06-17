@@ -104,10 +104,14 @@
     </fragment>
 
     <fragment
-        android:id="@+id/bottomTabNetwork"
+        android:id="@+id/networkFragment_"
         android:name="com.intree.development.presentation.home.network.NetworkFragment"
         android:label="NetworkFragment"
-        tools:layout="@layout/fragment_network" />
+        tools:layout="@layout/fragment_network" >
+        <action
+            android:id="@+id/action_networkFragment__to_networkPopupDialog"
+            app:destination="@id/networkPopupDialog" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentInvite"
@@ -117,13 +121,13 @@
 
     <fragment
         android:id="@+id/bottomTabIntroduce"
-        android:name="com.intree.development.presentation.home.introduce_new.introduce.IntroduceFragment"
+        android:name="com.intree.development.presentation.home.introduce.IntroduceFragment"
         android:label="IntroduceFragment"
         tools:layout="@layout/fragment_introduce" />
 
     <fragment
         android:id="@+id/introduceHistoryFragment"
-        android:name="com.intree.development.presentation.home.introduce_new.introduce.history.IntroduceHistoryFragment"
+        android:name="com.intree.development.presentation.home.introduce.history.IntroduceHistoryFragment"
         android:label="IntroduceHistoryFragment"
         tools:layout="@layout/fragment_introduce_history" />
 
@@ -139,7 +143,7 @@
         android:label="ExploreFragment"
         tools:layout="@layout/fragment_explore" />
     <dialog
-        android:id="@+id/networkPopupFragment"
+        android:id="@+id/networkPopupDialog"
         android:name="com.intree.development.presentation.home.network.NetworkPopupFragment"
         android:label="fragment_network_popup"
         tools:layout="@layout/fragment_network_popup" />

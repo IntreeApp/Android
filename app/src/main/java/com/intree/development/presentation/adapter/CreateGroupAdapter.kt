@@ -40,9 +40,10 @@ class CreateGroupAdapter(
 
                 holder.checkBox?.isChecked = checkedStateArray.get(position)
 
+                // This counter doesn't count right
                 holder.checkBox?.setOnCheckedChangeListener{ _, isChecked ->
                     if (isChecked) {
-                        println("Linje 45")
+
                         checkedItemsCount += 1
                     } else {
                         checkedItemsCount -= 1

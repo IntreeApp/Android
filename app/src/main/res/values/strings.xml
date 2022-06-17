@@ -101,6 +101,7 @@
     <string name="based_on_an_aspect">Based on an aspect</string>
     <string name="group_has_been_created">Group has been created</string>
     <string name="save">Save</string>
+    <string name="write_your_introduction_message_here">Write your introduction message here</string>
 
 
 </resources>
