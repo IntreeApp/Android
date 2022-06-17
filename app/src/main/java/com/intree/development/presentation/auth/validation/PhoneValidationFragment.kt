@@ -1,22 +1,27 @@
 package com.intree.development.presentation.auth.validation
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.github.omadahealth.lollipin.lib.managers.AppLock
+import com.github.omadahealth.lollipin.lib.managers.LockManager
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.intree.development.R
 import com.intree.development.databinding.PhoneValidationFragmentBinding
 import com.intree.development.presentation.auth.AuthActivity
-import com.intree.development.presentation.auth.forms.SignUpPhoneFormFragmentDirections
+import com.intree.development.presentation.auth.PinCodeActivity
 import java.util.concurrent.TimeUnit
 
 
@@ -24,7 +29,7 @@ class PhoneValidationFragment : Fragment() {
 
     private val args: PhoneValidationFragmentArgs by navArgs()
 
-    private var _binding: PhoneValidationFragmentBinding? = null
+    private lateinit var binding: PhoneValidationFragmentBinding
 
     // create instance of firebase auth
     private lateinit var auth: FirebaseAuth
@@ -34,36 +39,53 @@ class PhoneValidationFragment : Fragment() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.phone_validation_fragment, container, false)
+        if (!::binding.isInitialized) {
+            binding = PhoneValidationFragmentBinding.inflate(inflater)
+        }
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = PhoneValidationFragmentBinding.bind(view)
+
+        binding = PhoneValidationFragmentBinding.bind(view)
+
+        binding.btnCreatePin.setOnClickListener {
+            // Forwarding app to PinCodeActivity for enabling the PinCode
+            val intent = Intent(context, PinCodeActivity::class.java)
+
+            // We add some extras which is provided by library
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK)
+
+            startActivity(intent)
+
+
+        }
 
         auth = FirebaseAuth.getInstance()
         //!for testing period
         //TODO add App Verification
         //auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
 
-        _binding?.toolbar?.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
-        _binding?.toolbar?.setNavigationOnClickListener { activity?.onBackPressed() }
-        _binding?.tvPhoneNumberValue?.text = args.validPhone
-        _binding?.otpProgressBar?.isVisible = true
-        _binding?.tvWrongCodeIndicator?.isVisible = false
+        binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
+        binding.tvPhoneNumberValue.text = args.validPhone
+        binding.otpProgressBar.isVisible = true
+        binding.tvWrongCodeIndicator.isVisible = false
 
-        _binding?.etCode?.doOnTextChanged(fun(
+        binding.etCode.doOnTextChanged(fun(
             text: CharSequence?,
             start: Int,
             before: Int,
             count: Int
         ) {
-            _binding?.otpProgressBar?.isVisible = false
-            _binding?.tvCodeArrivalInProgress?.isVisible = false
+            binding.otpProgressBar.isVisible = false
+            binding.tvCodeArrivalInProgress.isVisible = false
             if (text!!.toString().length > 5) {
                 signInWithPhoneAuthCredential(text.toString())
             }
@@ -72,6 +94,8 @@ class PhoneValidationFragment : Fragment() {
         setPhoneAuthCallbacks()
         sendVerificationCode()
     }
+
+
 
     // this method sends the verification code and starts the callback of verification
     // which is implemented above in onCreate
@@ -123,21 +147,21 @@ class PhoneValidationFragment : Fragment() {
             auth.signInWithCredential(credential)
                 .addOnCompleteListener((activity as AuthActivity)) { task ->
                     if (task.isSuccessful) {
-                        _binding?.otpProgressBar?.isVisible = false
-                        _binding?.imgCodeIsValidIndicator?.isVisible = true
-                        _binding?.imgCodeIsNotValidIndicator?.isVisible = false
-                        _binding?.tvWrongCodeIndicator?.isVisible = false
-                        _binding?.tvCodeArrivalInProgress?.isVisible = false
+                        binding.otpProgressBar.isVisible = false
+                        binding.imgCodeIsValidIndicator.isVisible = true
+                        binding.imgCodeIsNotValidIndicator.isVisible = false
+                        binding.tvWrongCodeIndicator.isVisible = false
+                        binding.tvCodeArrivalInProgress.isVisible = false
                         Log.d("FIREBASE_AUTH", FirebaseAuth.getInstance().uid!!)
                         val action =
                             PhoneValidationFragmentDirections.actionPhoneValidationFragmentToSignUpNameFormFragment()
                         action.phone = args.validPhone
                         findNavController().navigate(action)
                     } else {
-                        _binding?.tvWrongCodeIndicator?.isVisible = true
-                        _binding?.imgCodeIsValidIndicator?.isVisible = false
-                        _binding?.imgCodeIsNotValidIndicator?.isVisible = true
-                        _binding?.tvCodeArrivalInProgress?.isVisible = false
+                        binding?.tvWrongCodeIndicator?.isVisible = true
+                        binding?.imgCodeIsValidIndicator?.isVisible = false
+                        binding?.imgCodeIsNotValidIndicator?.isVisible = true
+                        binding?.tvCodeArrivalInProgress?.isVisible = false
                         // Sign in failed, display a message and update the UI
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {
                             // The verification code entered was invalid
@@ -150,8 +174,10 @@ class PhoneValidationFragment : Fragment() {
         }
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        //binding = null
     }
 }

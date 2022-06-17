@@ -1,12 +1,12 @@
 package com.intree.development.presentation.home
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
@@ -18,15 +18,20 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.github.omadahealth.lollipin.lib.PinFragmentActivity
+import com.github.omadahealth.lollipin.lib.managers.AppLock
+import com.github.omadahealth.lollipin.lib.managers.LockManager
 import com.intree.development.R
 import com.intree.development.databinding.ActivityMainBinding
+import com.intree.development.presentation.auth.PinCodeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MainActivity : FragmentActivity() {
+class MainActivity : PinFragmentActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +43,12 @@ class MainActivity : FragmentActivity() {
 
         val context = applicationContext
 
-        //Can't get it to work with binding
+        /*if (!LockManager.getInstance().appLock.isPasscodeSet) {
+            val intent = Intent(this, PinCodeActivity::class.java)
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK)
+            startActivityForResult(intent, REQUEST_FIRST_RUN_PIN)
+        }*/
+
         val scaledBottomNavIconPressed = context.scaledDrawableResources(
             R.drawable.ic_btn_nav_bar_center_pressed,
             R.dimen.design_fab_image_size,

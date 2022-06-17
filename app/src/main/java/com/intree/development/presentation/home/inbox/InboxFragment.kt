@@ -68,7 +68,7 @@ class InboxFragment : Fragment(R.layout.fragment_inbox)  {
     }
 
     private fun loadMore() {
-        println("InboxFragment loadMore() ran")
+
     }
 
     private fun createMockDb(): MutableList<Message> {
@@ -120,25 +120,5 @@ class InboxFragment : Fragment(R.layout.fragment_inbox)  {
         binding.cardContainerGroups.addView(view)
     }
 
-    /*
-    // https://www.youtube.com/watch?v=__gxd4IKVvk Nået til 17.30
-    inner class
 
-    inner class UnreadMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var avatar: RoundedImageView = itemView.findViewById(R.id.unreadMessageAvatar)
-        private var name: TextView = itemView.findViewById(R.id.unreadMessageName)
-        private var content: TextView = itemView.findViewById(R.id.unreadMessageContent)
-        private var timestamp: TextView = itemView.findViewById(R.id.unreadMessageTimestamp)
-
-        fun updateMessage(message: Message) {
-            //Needs a check for avatar not null
-            avatar.setImageDrawable(message.avatar)
-            name.text = message.sender
-            content.text = message.content
-            timestamp.text = message.timestamp
-        }
-
-    }
-
-    */
 }

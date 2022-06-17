@@ -180,13 +180,14 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/btn_primary_rounded_rippled"
+        android:background="@drawable/btn_purple_rounded_rippled"
         android:text="@string/continue_short"
+
         android:fontFamily="@font/montserrat_bold"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:elevation="8dp"
-        android:textColor="@color/text"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

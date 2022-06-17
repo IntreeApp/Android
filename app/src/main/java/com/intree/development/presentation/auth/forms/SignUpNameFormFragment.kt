@@ -51,7 +51,7 @@ class SignUpNameFormFragment : Fragment() {
 
             FirebaseDatabase.getInstance().reference.child("users").child(
                 FirebaseAuth.getInstance().uid!!).setValue(initialUserData).addOnCompleteListener {
-                findNavController().navigate(R.id.action_signUpNameFormFragment_to_setUpUserActivityFragment)
+                //findNavController().navigate(R.id.action_signUpNameFormFragment_to_setUpUserActivityFragment)
             }.addOnFailureListener {
                 Toast.makeText(activity, "Profile setup data upload failed", Toast.LENGTH_SHORT).show()
             }

@@ -170,6 +170,20 @@
             android:textColor="@color/text"
             tools:ignore="SmallSp" />
 
+        <Button
+            android:id="@+id/btnCreatePin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_purple_rounded_rippled"
+            android:layout_marginTop="25dp"
+            android:text="create pin"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWrongCodeIndicator"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

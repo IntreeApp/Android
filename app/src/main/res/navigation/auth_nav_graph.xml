@@ -48,9 +48,6 @@
         android:name="com.intree.development.presentation.auth.forms.SignUpNameFormFragment"
         android:label="SignUpNameFormFragment"
         tools:layout="@layout/sign_up_name_form_fragment" >
-        <action
-            android:id="@+id/action_signUpNameFormFragment_to_setUpUserActivityFragment"
-            app:destination="@id/setUpUserActivityFragment" />
         <argument
             android:name="phone"
             app:argType="string" />
