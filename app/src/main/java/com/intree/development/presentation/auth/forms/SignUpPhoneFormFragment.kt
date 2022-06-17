@@ -68,6 +68,7 @@ class SignUpPhoneFormFragment : Fragment() {
                 ).show()
             }
         }
+        /*
         _binding?.tvBtnTerms?.setOnClickListener {
             val action =
                 SignUpPhoneFormFragmentDirections.actionSignUpPhoneFromFragmentToVebViewFragment()
@@ -79,7 +80,7 @@ class SignUpPhoneFormFragment : Fragment() {
                 SignUpPhoneFormFragmentDirections.actionSignUpPhoneFromFragmentToVebViewFragment()
             action.url = POLICY_URL
             findNavController().navigate(action)
-        }
+        }*/
     }
 
     @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
