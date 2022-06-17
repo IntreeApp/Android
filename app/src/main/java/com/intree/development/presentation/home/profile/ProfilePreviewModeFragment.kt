@@ -61,7 +61,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         if (!::binding.isInitialized) {
             binding = ProfilePreviewModeFragmentBinding.inflate(inflater)
         }
-        viewModel.getProfile()
+        //viewModel.getProfile()
         return binding.root
     }
 
