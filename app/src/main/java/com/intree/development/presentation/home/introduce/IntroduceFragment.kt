@@ -40,12 +40,12 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
 
     private fun initContent() {
         Glide.with(requireContext())
-            .load(R.drawable.ic_ellipse_84)
+            .load(R.drawable.ic_introduce_placeholder)
             .override(200, 200)
             .into(binding.avatarLeft)
 
         Glide.with(requireContext())
-            .load(R.drawable.ic_ellipse_84)
+            .load(R.drawable.ic_introduce_placeholder)
             .override(200, 200)
             .into(binding.avatarRight)
 

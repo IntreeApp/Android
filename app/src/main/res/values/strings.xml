@@ -112,6 +112,7 @@
     <string name="save">Save</string>
     <string name="based_on_an_aspect">Based on an aspect</string>
     <string name="create_group">Create Group</string>
+    <string name="settings">Settings</string>
 
 
 </resources>

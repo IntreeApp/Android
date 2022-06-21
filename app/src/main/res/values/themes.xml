@@ -10,7 +10,8 @@
         <item name="colorSecondaryVariant">@color/primary_purple_half_filled</item>
         <item name="colorOnSecondary">@color/text</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
 

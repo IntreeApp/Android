@@ -51,6 +51,7 @@
 
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.scanCode.ScanCodeActivity"

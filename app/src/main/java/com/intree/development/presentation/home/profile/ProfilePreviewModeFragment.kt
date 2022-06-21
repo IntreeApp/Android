@@ -1,8 +1,6 @@
 package com.intree.development.presentation.home.profile
 
 import android.Manifest
-import android.R.attr.left
-import android.R.attr.right
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,10 +11,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginStart
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,9 +27,11 @@ import com.intree.development.databinding.ProfilePreviewModeFragmentBinding
 import com.intree.development.domain.UserProfileEntity
 import com.intree.development.presentation.adapter.BenefitsAdapter
 import com.intree.development.presentation.adapter.IdentitiesAdapter
+import com.intree.development.presentation.auth.AuthActivity
 import com.intree.development.presentation.home.profile.vm.ProfileViewModel
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -69,6 +67,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         super.onViewCreated(view, savedInstanceState)
         initContent()
         requestPermissions()
+
     }
 
     override fun onRequestPermissionsResult(
@@ -124,24 +123,34 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
     }
 
     private fun initOnClickListeners() {
-        binding.addUserPhoto.setOnClickListener {
+        binding.imgProfilePhotoPreview.setOnClickListener {
             if (allPermissionsGranted()) {
                 viewModel.photoCode = 0
                 CropImage.activity()
+                    .setFixAspectRatio(true)
+                    .setCropShape(CropImageView.CropShape.OVAL)
                     .start(requireContext(), this)
             } else {
                 requestPermissions()
             }
         }
 
-        binding.addBackgroundPhoto.setOnClickListener {
+        binding.profileCoverImg.setOnClickListener {
             if (allPermissionsGranted()) {
                 viewModel.photoCode = 1
                 CropImage.activity()
+                    .setFixAspectRatio(true)
+                    .setAspectRatio(450, 200)
                     .start(requireContext(), this)
             } else {
                 requestPermissions()
             }
+        }
+
+        // for testing purposes
+        binding.btnSettings.setOnClickListener {
+        val intent = Intent(context, AuthActivity::class.java)
+        startActivity(intent)
         }
     }
 
@@ -157,7 +166,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         when (viewModel.photoCode) {
             0 -> {
                 binding.imgProfilePhotoPreview.setImageDrawable(null)
-                binding.addUserPhoto.visibility = View.GONE
+                //binding.btnAddUserPhoto.visibility = View.GONE
                 Glide.with(requireContext())
                     .load(
                         uri
@@ -188,7 +197,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
             }
             1 -> {
                 binding.profileCoverImg.background = null
-                binding.addBackgroundPhoto.visibility = View.GONE
+                //binding.addBackgroundPhoto.visibility = View.GONE
 
                 Glide.with(requireContext())
                     .load(

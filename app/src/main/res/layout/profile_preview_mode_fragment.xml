@@ -24,40 +24,81 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imgProfilePhotoPreview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginStart="12dp"
             android:elevation="2dp"
-            android:src="@drawable/unsplash_profile_none_icon"
+            android:src="@drawable/avatar_round_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/profileCoverImg"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.165"
             app:riv_border_width="0dp"
+            app:riv_border_color="@color/white"
             app:riv_oval="true" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/addUserPhoto"
+
+
+        <RelativeLayout
+            android:id="@+id/btnAddUserPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:padding="20dp"
-            android:src="@drawable/camera_fill"
+            android:layout_marginTop="65dp"
+            android:layout_marginStart="65dp"
+            android:translationZ="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/imgProfilePhotoPreview"
             app:layout_constraintEnd_toEndOf="@+id/imgProfilePhotoPreview"
             app:layout_constraintStart_toStartOf="@+id/imgProfilePhotoPreview"
-            app:layout_constraintTop_toTopOf="@+id/imgProfilePhotoPreview" />
+            app:layout_constraintTop_toTopOf="@+id/imgProfilePhotoPreview"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:elevation="4dp"
+                android:src="@drawable/ic_camera_dark_grey"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_white"
+                app:riv_corner_radius="50dp" />
+
+        </RelativeLayout>
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+
+
+
+
+        <RelativeLayout
             android:id="@+id/addBackgroundPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:padding="16dp"
-            android:src="@drawable/camera_fill"
-            app:layout_constraintBottom_toBottomOf="@+id/profileCoverImg"
-            app:layout_constraintEnd_toEndOf="@+id/profileCoverImg" />
+            android:layout_marginTop="158dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="30dp"
+            android:translationZ="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/profileCoverImg">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:elevation="4dp"
+                android:src="@drawable/ic_camera_dark_grey"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_white"
+                app:riv_corner_radius="50dp" />
+
+        </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEditProfile"
@@ -65,7 +106,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/btn_outlined_light"
+            android:background="@drawable/btn_large"
             android:elevation="0dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/edit_profile"
@@ -82,25 +123,80 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/montserrat_bold"
             android:padding="2dp"
             android:text="Michael Anderson"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/btnEditProfile"
-            app:layout_constraintStart_toStartOf="@+id/imgProfilePhotoPreview"
-            app:layout_constraintTop_toBottomOf="@+id/imgProfilePhotoPreview" />
+            app:layout_constraintStart_toEndOf="@+id/imgProfilePhotoPreview"
+            app:layout_constraintTop_toBottomOf="@+id/profileCoverImg" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAspectsCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0 Aspects"
+            android:textSize="10sp"
+            android:fontFamily="@font/montserrat"
+            app:layout_constraintTop_toBottomOf="@id/tvUserFullName"
+            app:layout_constraintStart_toStartOf="@+id/tvUserFullName"/>
+
+        <LinearLayout
+            android:id="@+id/containerSquareButtons"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/imgProfilePhotoPreview">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/btn_purple_square"
+                android:text="@string/settings"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:textAllCaps="false"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/btn_purple_square"
+                android:text="Preview"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
+                android:textAllCaps="false"
+                />
+
+
+        </LinearLayout>
+
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvRoomsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/aspects"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/tvUserFullName"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserFullName" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerSquareButtons" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAddNew"
@@ -111,7 +207,7 @@
             android:text="@string/add_new"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/btnEditProfile"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserFullName" />
+            app:layout_constraintTop_toBottomOf="@+id/containerSquareButtons" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMangeYourAppearance"
