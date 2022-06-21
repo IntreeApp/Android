@@ -94,14 +94,24 @@
     <string name="create">Create</string>
     <string name="aspects">Aspects</string>
     <string name="add_new"><![CDATA[Add new >]]></string>
-    <string name="group_info">Group Info</string>
-    <string name="upload_a_group_cover">Upload a group cover</string>
-    <string name="create_a_group_title">Create a group title</string>
-    <string name="create_group">Create Group</string>
-    <string name="based_on_an_aspect">Based on an aspect</string>
+    <string name="from">From:</string>
+    <string name="added_to_preferred_posts">Added to preferred posts</string>
+    <string name="do_not_show_this_again">do not show this again</string>
+    <string name="posts_will_now_be_displayed_at_the_top">posts will now be displayed at the top</string>
+    <string name="favourites">Favourites</string>
+    <string name="report">Report</string>
+    <string name="mute_all_posts_from_generic_name">Mute all posts from “Generic name”</string>
+    <string name="subscribe_to_updates">Subscribe to updates</string>
+    <string name="mute_posts_from_aspect">Mute posts from “Aspect”</string>
+    <string name="new_post">New Post</string>
+    <string name="add_media">Add media</string>
+    <string name="write_a_caption">Write a caption...</string>
     <string name="group_has_been_created">Group has been created</string>
+    <string name="group_info">Group Info</string>
+    <string name="create_a_group_title">Create a group title</string>
     <string name="save">Save</string>
-    <string name="write_your_introduction_message_here">Write your introduction message here</string>
+    <string name="based_on_an_aspect">Based on an aspect</string>
+    <string name="create_group">Create Group</string>
 
 
 </resources>
