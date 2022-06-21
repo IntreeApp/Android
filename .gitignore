@@ -1,4 +1,12 @@
 /app/google-services.json
 .idea/
 /keystore.properties
-*.bin
+
+# Generated files
+bin/
+gen/
+out/
+
+# Gradle files
+.gradle/
+build/
