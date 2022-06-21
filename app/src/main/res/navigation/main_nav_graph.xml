@@ -149,4 +149,10 @@
         tools:layout="@layout/fragment_network_popup" />
 
 
+    <fragment
+        android:id="@+id/creatingPostFragment"
+        android:name="com.intree.development.presentation.home.createPost.CreatingPostFragment"
+        android:label="CreatingPostFragment"
+        tools:layout="@layout/fragment_creating_post" />
+
 </navigation>

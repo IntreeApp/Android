@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgRoundedProfilePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:elevation="2dp"
+        android:focusable="true"
+        android:src="@drawable/ic_no_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_width="0dp"
+        app:riv_mutate_background="false"
+        app:riv_oval="true" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clUserData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgRoundedProfilePhoto"
+        app:layout_constraintStart_toEndOf="@+id/imgRoundedProfilePhoto"
+        app:layout_constraintTop_toTopOf="@+id/imgRoundedProfilePhoto">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Michel Likjd" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/from"
+            android:textColor="@color/purple"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:padding="16dp"
+        android:src="@drawable/ic_baseline_more_horiz_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgRoundedProfilePhoto" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:gravity="start"
+        android:textColor="@color/text"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivSettings"
+        app:layout_constraintStart_toStartOf="@+id/imgRoundedProfilePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imgRoundedProfilePhoto"
+        tools:text="This work i did from i client is probably the best i’ve done. What do you think?" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:ci_drawable="@drawable/btn_dark_rounded"
+        app:ci_drawable_unselected="@drawable/btn_rounded_outlined_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
+        android:padding="0dp"
+        android:src="@drawable/ic_messagebtn"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMessage"
+        app:layout_constraintEnd_toStartOf="@+id/ivPrefferedPosts"
+        app:layout_constraintStart_toEndOf="@+id/ivMessage"
+        app:layout_constraintTop_toTopOf="@+id/ivMessage"
+        tools:text="5 min ago" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPrefferedPosts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toTopOf="@+id/ivMessage"
+        app:layout_constraintWidth_percent="0.12" />
+
+    <View
+        android:id="@+id/ivLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="#ebebeb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMessage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
