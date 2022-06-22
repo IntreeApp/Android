@@ -2,6 +2,7 @@ package com.intree.development.presentation.auth.forms
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.telephony.TelephonyManager
@@ -13,11 +14,13 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.github.omadahealth.lollipin.lib.managers.AppLock
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.intree.development.R
 import com.intree.development.databinding.SignUpPhoneFormFragmentBinding
 import com.intree.development.presentation.auth.AuthActivity
+import com.intree.development.presentation.auth.PinCodeActivity
 import com.intree.development.util.*
 import java.util.*
 
@@ -68,6 +71,17 @@ class SignUpPhoneFormFragment : Fragment() {
                 ).show()
             }
         }
+
+        _binding?.btnCreatePin?.setOnClickListener {
+            // Forwarding app to PinCodeActivity for enabling the PinCode
+            val intent = Intent(context, PinCodeActivity::class.java)
+
+            // We add some extras which is provided by library
+            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK)
+
+            startActivity(intent)
+        }
+
         /*
         _binding?.tvBtnTerms?.setOnClickListener {
             val action =

@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Unify">
         <activity
+            android:name=".presentation.auth.PinCodeActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.auth.AuthActivity"
             android:label="@string/title_activity_auth"
             android:screenOrientation="portrait"

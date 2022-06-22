@@ -1,5 +1,6 @@
 package com.intree.development.presentation.auth.validation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,11 +12,13 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.github.omadahealth.lollipin.lib.managers.AppLock
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.intree.development.R
 import com.intree.development.databinding.PhoneValidationFragmentBinding
 import com.intree.development.presentation.auth.AuthActivity
+import com.intree.development.presentation.auth.PinCodeActivity
 import com.intree.development.presentation.auth.forms.SignUpPhoneFormFragmentDirections
 import java.util.concurrent.TimeUnit
 
@@ -44,6 +47,8 @@ class PhoneValidationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = PhoneValidationFragmentBinding.bind(view)
+
+
 
         auth = FirebaseAuth.getInstance()
         //!for testing period

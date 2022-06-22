@@ -168,14 +168,14 @@
                 />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnPreview"
+                android:id="@+id/btnSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/btn_purple_square"
-                android:text="Preview"
+                android:text="Signup"
                 android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_bold"
                 android:textAllCaps="false"

@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -148,9 +149,13 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         }
 
         // for testing purposes
-        binding.btnSettings.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
         val intent = Intent(context, AuthActivity::class.java)
         startActivity(intent)
+        }
+
+        binding.btnSettings.setOnClickListener {
+            findNavController()
         }
     }
 
