@@ -113,6 +113,8 @@
     <string name="based_on_an_aspect">Based on an aspect</string>
     <string name="create_group">Create Group</string>
     <string name="settings">Settings</string>
+    <string name="login_with_biometrics">Login with Biometrics</string>
+    <string name="use_pincode">Use Pincode</string>
 
 
 </resources>

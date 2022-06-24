@@ -154,5 +154,10 @@
         android:name="com.intree.development.presentation.home.createPost.CreatingPostFragment"
         android:label="CreatingPostFragment"
         tools:layout="@layout/fragment_creating_post" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.intree.development.presentation.home.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
 
 </navigation>

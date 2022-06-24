@@ -173,21 +173,6 @@
 
     </LinearLayout>-->
 
-    <Button
-        android:id="@+id/btnCreatePin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_purple_rounded_rippled"
-        android:layout_margin="40dp"
-        android:text="Jump to Pin Activity"
-        android:textColor="@color/white"
-        android:fontFamily="@font/montserrat_bold"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnContinue"
-        />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnContinue"
         style="@style/Widget.AppCompat.Button.Borderless"

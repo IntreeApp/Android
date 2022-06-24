@@ -155,7 +155,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         }
 
         binding.btnSettings.setOnClickListener {
-            findNavController()
+            findNavController().navigate(R.id.settingsFragment)
         }
     }
 

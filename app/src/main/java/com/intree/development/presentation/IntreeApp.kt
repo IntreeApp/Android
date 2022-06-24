@@ -17,6 +17,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.internal.ActivityLifecycleListener
 import com.intree.development.R
 import com.intree.development.presentation.auth.PinCodeActivity
+import com.intree.development.util.SessionManager
 import dagger.hilt.android.HiltAndroidApp
 
 
@@ -24,29 +25,43 @@ import dagger.hilt.android.HiltAndroidApp
 class IntreeApp : Application() {
 
     private val lockManager = LockManager.getInstance()
+    private val TAG = "IntreeApp"
+    private lateinit var sessionManager: SessionManager
+
 
     override fun onCreate() {
         super.onCreate()
 
-        //registerActivityLifecycleCallbacks(ActivityLifecycleListener)
-
         instance = this
 
+        sessionManager = SessionManager()
+
+        Log.d(TAG, LockManager.getInstance().toString())
+
         // Enables custom Pin code activity
-        lockManager.enableAppLock(this,PinCodeActivity::class.java)
+
+        if (sessionManager.doesUsePinCode()) {
+            lockManager.enableAppLock(this,PinCodeActivity::class.java)
+            // Setting logo for  Pin code activity
+                lockManager.appLock.logoId = R.drawable.intree_logo_transparent
+            Log.d(TAG, "Pincode enabled")
+        } else {
+            lockManager.disableAppLock()
+            Log.d(TAG, "Pincode disabled")
+        }
 
 
-
-        // Setting logo for  Pin code activity
-        lockManager.appLock.logoId = R.drawable.intree_logo_transparent
 
         // removes forgot-pin-option
-        if (lockManager.appLock.isPasscodeSet) {
-            lockManager.appLock.setShouldShowForgot(false)
-        } else {
-            lockManager.appLock.setShouldShowForgot(true)
+        /*
+            Log.d(TAG, lockManager.appLock.isPasscodeSet.toString())
+            if (lockManager.appLock.isPasscodeSet) {
+                lockManager.appLock.setShouldShowForgot(true)
+            } else {
+                lockManager.appLock.setShouldShowForgot(false)
+            }
 
-        }
+         */
 
         // timeout set in milliseconds
         //lockManager.appLock.timeout = 1000
@@ -61,39 +76,4 @@ class IntreeApp : Application() {
             return instance.applicationContext
         }
     }
-
-    object ActivityLifecycleListener : ActivityLifecycleCallbacks {
-        private const val TAG = "LifecycleCallbacks"
-        override fun onActivityPaused(p0: Activity) {
-            Log.d(TAG,"onActivityPaused at ${p0.localClassName}")
-            // LockManager.getInstance().appLock.setLastActiveMillis()
-        }
-
-        override fun onActivityStarted(p0: Activity) {
-            Log.d(TAG,"onActivityStarted at ${p0.localClassName}")
-        }
-
-        override fun onActivityDestroyed(p0: Activity) {
-            Log.d(TAG,"onActivityDestroyed at ${p0.localClassName}")
-        }
-
-        override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
-            Log.d(TAG,"onActivitySaveInstanceState at ${p0.localClassName}")
-        }
-
-        override fun onActivityStopped(p0: Activity) {
-            Log.d(TAG,"onActivityStopped at ${p0.localClassName}")
-        }
-
-        override fun onActivityCreated(p0: Activity, p1: Bundle?) {
-            Log.d(TAG,"onActivityCreated at ${p0.localClassName}")
-        }
-
-        override fun onActivityResumed(p0: Activity) {
-            Log.d(TAG,"onActivityResumed at ${p0.localClassName}")
-        }
-    }
-
-
-
 }

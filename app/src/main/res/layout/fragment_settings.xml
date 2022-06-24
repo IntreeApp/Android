@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/settings"
+        android:textColor="@color/text"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+         />
+
+    <TextView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/text"
+        android:textSize="18sp"
+         />
+
+    <RelativeLayout
+        android:id="@+id/rowUsePinCode"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/titleTextView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/usePinCodeStringTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/use_pincode"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_centerVertical="true"
+
+            />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchPinCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:checked="true"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rowLoginWithBiometrics"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/rowUsePinCode"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/biometricsStringTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/login_with_biometrics"
+
+            />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchBiometrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:checked="false" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

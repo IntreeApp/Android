@@ -72,16 +72,6 @@ class SignUpPhoneFormFragment : Fragment() {
             }
         }
 
-        _binding?.btnCreatePin?.setOnClickListener {
-            // Forwarding app to PinCodeActivity for enabling the PinCode
-            val intent = Intent(context, PinCodeActivity::class.java)
-
-            // We add some extras which is provided by library
-            intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK)
-
-            startActivity(intent)
-        }
-
         /*
         _binding?.tvBtnTerms?.setOnClickListener {
             val action =
