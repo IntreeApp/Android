@@ -23,11 +23,10 @@ import com.intree.development.R
 import com.intree.development.data.model.ReferContactData
 import com.intree.development.databinding.FragmentInviteBinding
 import com.intree.development.presentation.adapter.ContactsAdapter
-import com.intree.development.presentation.home.profile.view_pager.RoomVPAdapter
+import com.intree.development.presentation.home.profile.view_pager.AspectVPAdapter
 import com.intree.development.presentation.home.profile.vm.ProfileViewModel
 import com.intree.development.presentation.interfaces.IContacts
 import com.intree.development.presentation.scanCode.ScanCodeActivity
-import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -118,19 +117,19 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
     private fun initRooms() {
         profileVm.getOwnRooms()
         val viewpager: ViewPager2 = binding.vpRooms
-        viewpager.adapter = RoomVPAdapter(childFragmentManager, lifecycle)
+        viewpager.adapter = AspectVPAdapter(childFragmentManager, lifecycle)
 
         viewpager.clipToPadding = false
         viewpager.offscreenPageLimit = 2
 
         binding.vpRoomsIndicator.setViewPager(viewpager)
-        profileVm.ownRooms.observe(viewLifecycleOwner) {
+        profileVm.ownAspects.observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 it.forEach { roomForPreview ->
-                    (viewpager.adapter as RoomVPAdapter).addExistingRoomItem(roomEntityForPreview = roomForPreview)
+                    (viewpager.adapter as AspectVPAdapter).addExistingRoomItem(aspectEntityForPreview = roomForPreview)
                 }
             }
-            (viewpager.adapter as RoomVPAdapter).addCreateRoomItem(it.isEmpty())
+            (viewpager.adapter as AspectVPAdapter).addCreateRoomItem(it.isEmpty())
 
             binding.vpRoomsIndicator.setViewPager(viewpager)
         }

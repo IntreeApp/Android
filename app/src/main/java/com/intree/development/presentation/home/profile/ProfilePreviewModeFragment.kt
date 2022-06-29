@@ -22,12 +22,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.intree.development.R
-import com.intree.development.data.uiModels.BenefitsUIModel
-import com.intree.development.data.uiModels.IdentitiesUIModel
+import com.intree.development.data.uiModels.TreetsUIModel
+import com.intree.development.data.uiModels.AspectsExtendedUIModel
 import com.intree.development.databinding.ProfilePreviewModeFragmentBinding
 import com.intree.development.domain.UserProfileEntity
-import com.intree.development.presentation.adapter.BenefitsAdapter
-import com.intree.development.presentation.adapter.IdentitiesAdapter
+import com.intree.development.presentation.adapter.TreetsAdapter
+import com.intree.development.presentation.adapter.InviteAspectsAdapter
 import com.intree.development.presentation.auth.AuthActivity
 import com.intree.development.presentation.home.profile.vm.ProfileViewModel
 import com.squareup.picasso.Picasso
@@ -41,8 +41,8 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
     private val viewModel by viewModels<ProfileViewModel>()
 
     private lateinit var binding: ProfilePreviewModeFragmentBinding
-    private val adapterIdentities = IdentitiesAdapter()
-    private val adapterBenefits = BenefitsAdapter()
+    private val adapterAspects = InviteAspectsAdapter()
+    private val adapterTreets = TreetsAdapter()
 
     companion object {
         private const val requestContactCode = 1
@@ -90,8 +90,8 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
 
     private fun initContent() {
         initOnClickListeners()
-        initBenefitsAdapter()
-        initIdentitiesAdapter()
+        initTreetsAdapter()
+        initAspectsAdapter()
 
         viewModel.userEntity.observe(viewLifecycleOwner) {
             val profile = it ?: UserProfileEntity()
@@ -231,30 +231,30 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         }
     }
 
-    private fun initBenefitsAdapter() {
-        binding.rvBenefits.adapter = adapterBenefits
-        binding.rvBenefits.setHasFixedSize(true)
+    private fun initTreetsAdapter() {
+        binding.rvTreets.adapter = adapterTreets
+        binding.rvTreets.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        binding.rvBenefits.layoutManager = layoutManager
+        binding.rvTreets.layoutManager = layoutManager
 
-        adapterBenefits.setData(benefitsMockData())
+        adapterTreets.setData(treetsMockData())
     }
 
-    private fun initIdentitiesAdapter() {
-        binding.rvIdentities.adapter = adapterIdentities
-        binding.rvIdentities.setHasFixedSize(true)
+    private fun initAspectsAdapter() {
+        binding.rvAspects.adapter = adapterAspects
+        binding.rvAspects.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        binding.rvIdentities.layoutManager = layoutManager
+        binding.rvAspects.layoutManager = layoutManager
 
-        adapterIdentities.setData(identitiesMockData())
+        adapterAspects.setData(aspectsMockData())
     }
 
-    private fun identitiesMockData(): ArrayList<IdentitiesUIModel> {
-        val list = ArrayList<IdentitiesUIModel>()
+    private fun aspectsMockData(): ArrayList<AspectsExtendedUIModel> {
+        val list = ArrayList<AspectsExtendedUIModel>()
         list.add(
-            IdentitiesUIModel(
+            AspectsExtendedUIModel(
                 1,
                 "Design Intern",
                 R.drawable.unsplash_mock_1,
@@ -262,7 +262,7 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
             )
         )
         list.add(
-            IdentitiesUIModel(
+            AspectsExtendedUIModel(
                 2,
                 "Crypto",
                 R.drawable.crypto,
@@ -272,10 +272,10 @@ class ProfilePreviewModeFragment : Fragment(R.layout.profile_preview_mode_fragme
         return list
     }
 
-    private fun benefitsMockData(): ArrayList<BenefitsUIModel> {
-        val list = ArrayList<BenefitsUIModel>()
+    private fun treetsMockData(): ArrayList<TreetsUIModel> {
+        val list = ArrayList<TreetsUIModel>()
         list.add(
-            BenefitsUIModel(
+            TreetsUIModel(
                 1,
                 "Fashion 2022",
                 R.drawable.fashion

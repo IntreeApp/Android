@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounds"
+    android:id="@+id/createEditRoomRootView"
+    tools:context=".presentation.auth.set_up.SetUpUserActivityFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgrounds"
+        android:id="@+id/phoneValidationAppBar"
+        android:elevation="8dp"
+        android:theme="@style/Theme.Unify.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/backgrounds"
+            app:popupTheme="@style/Theme.Unify.PopupOverlay"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            android:theme="@style/Theme.Unify">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/createRoomTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aspect_title"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/text"
+                    android:textSize="20sp"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEdit"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="80dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/btn_rounded_outlined_light"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/edit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="10dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+        <!--    app:navigationIcon="?attr/homeAsUpIndicator"-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        tools:context=".presentation.auth.AuthActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".presentation.home.profile.ProfileEditModeFragment">
+
+            <ImageView
+                android:id="@+id/screenImg"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/logo"
+                android:scaleType="centerCrop"
+                android:background="@color/primary_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <View-->
+<!--                android:id="@+id/btnActiveViewers"-->
+<!--                android:layout_width="106dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/screenImg"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/screenImg"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:background="@drawable/ic_active_viewers_mock"/>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnPseudoChangeAvatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/btn_change_profile_photo_ext_radius"
+                android:clickable="true"
+                android:elevation="5dp"
+                android:focusable="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/roomLogoImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:scaleType="center"
+                    app:riv_corner_radius="12dip"
+                    app:riv_border_width="0dip"
+                    app:riv_tile_mode="repeat"
+                    app:riv_oval="false" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/tvRoomTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Aspect Title"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/screenImg" />
+
+            <TextView
+                android:id="@+id/tvRoomLinkTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/primary_purple"
+                android:text="www.intree.com"
+                android:textSize="15sp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/screenImg" />
+
+            <TextView
+                android:id="@+id/tvAboutRoomTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/about"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRoomLinkTitle" />
+
+            <TextView
+                android:id="@+id/tvAboutRoomDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/montserrat"
+                android:text="About the room."
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAboutRoomTitle" />
+
+            <TextView
+                android:id="@+id/tvAddPhotosTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/photos"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAboutRoomDescription" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/roomPhotosNestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintTop_toBottomOf="@id/tvAddPhotosTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/roomPhotosPreviewGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3"
+                    android:nestedScrollingEnabled="true"
+                    />
+
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/roomShareLinkHolder"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_margin="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/roomPhotosNestedScrollView"
+                android:background="@drawable/btn_primary_rounded"
+                android:elevation="6dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:text="TODO: add public link share"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRoomActiveStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                app:layout_constraintTop_toBottomOf="@id/roomShareLinkHolder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/web_aspect_is_not_active"
+                android:textAlignment="center"
+                />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchWebRoomIsActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRoomActiveStatus"
+                android:layout_margin="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                app:layout_constraintTop_toBottomOf="@id/switchWebRoomIsActive"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

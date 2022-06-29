@@ -28,10 +28,10 @@ class SetUpUserActivityFragment : Fragment() {
         }
         _binding?.cardSetUpStepTwo?.setOnClickListener {
             //findNavController().navigate(R.id.action_setUpUserActivityFragment_to_createRoomFragment)
-            val action = SetUpUserActivityFragmentDirections.actionSetUpUserActivityFragmentToCreateRoomFragment()
-            action.existingRoomId = null
-            action.existingRoomToEdit = null
-            findNavController().navigate(action)
+           // val action = SetUpUserActivityFragmentDirections.actionSetUpUserActivityFragmentToCreateRoomFragment()
+           // action.existingRoomId = null
+            //action.existingRoomToEdit = null
+            //findNavController().navigate(action)
         }
     }
 

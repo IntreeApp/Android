@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounds"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.auth.set_up.SetUpUserActivityFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgrounds"
+        android:id="@+id/phoneValidationAppBar"
+        android:elevation="8dp"
+        android:theme="@style/Theme.Unify.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/backgrounds"
+            app:popupTheme="@style/Theme.Unify.PopupOverlay"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            android:theme="@style/Theme.Unify">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aspect_gallery"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/text"
+                android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSaveRoomGallery"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_gravity="end"
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="12.5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/btn_dark_rounded_rippled"
+                android:elevation="3dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/done"
+                android:textAllCaps="false"
+                android:textColor="@color/backgrounds"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profileChangeCoverImg" />
+
+        </androidx.appcompat.widget.Toolbar>
+        <!--    app:navigationIcon="?attr/homeAsUpIndicator"-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="56dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            android:layout_marginBottom="80dp"
+            tools:listitem="@layout/list_item_aspect_gallery_draggable" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDeleteSelectedItems"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="140dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_dark_rounded_rippled"
+                android:elevation="3dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/delete_selected"
+                android:textAllCaps="false"
+                android:textColor="@color/backgrounds"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="12dp"
+                android:text="@string/hold_and_drag_to_change_the_order"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:fontFamily="@font/montserrat_bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

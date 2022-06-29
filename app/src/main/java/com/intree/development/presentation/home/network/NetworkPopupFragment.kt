@@ -2,36 +2,26 @@ package com.intree.development.presentation.home.network
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.card.MaterialCardView
 import com.intree.development.R
-import com.intree.development.data.uiModels.BenefitsUIModel
-import com.intree.development.data.uiModels.IdentitiesUIModel
-import com.intree.development.databinding.FragmentCreateGroupBinding
+import com.intree.development.data.uiModels.TreetsUIModel
+import com.intree.development.data.uiModels.AspectsExtendedUIModel
 import com.intree.development.databinding.FragmentNetworkPopupBinding
-import com.intree.development.databinding.ProfilePreviewModeFragmentBinding
-import com.intree.development.domain.UserProfileEntity
-import com.intree.development.presentation.adapter.BenefitsAdapter
-import com.intree.development.presentation.adapter.IdentitiesAdapter
+import com.intree.development.presentation.adapter.TreetsAdapter
+import com.intree.development.presentation.adapter.InviteAspectsAdapter
 import com.intree.development.presentation.home.network.vm.NetworkViewModel
-import com.squareup.picasso.Picasso
 
 class NetworkPopupFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentNetworkPopupBinding
-    private val adapterIdentities = IdentitiesAdapter()
-    private val adapterBenefits = BenefitsAdapter()
+    private val adapterAspects = InviteAspectsAdapter()
+    private val adapterTreets = TreetsAdapter()
 
     /*companion object {
         const val TAG = "SNetworkPopupFragmentDialog"
@@ -96,7 +86,7 @@ class NetworkPopupFragment : BottomSheetDialogFragment() {
 
     private fun initContent() {
         //initOnClickListeners()
-        initBenefitsAdapter()
+        initTreetsAdapter()
         initAspectsAdapter()
 
 
@@ -106,30 +96,30 @@ class NetworkPopupFragment : BottomSheetDialogFragment() {
         TODO("Not yet implemented")
     }
 
-    private fun initBenefitsAdapter() {
-        binding.rvBenefits.adapter = adapterBenefits
-        binding.rvBenefits.setHasFixedSize(true)
+    private fun initTreetsAdapter() {
+        binding.rvTreets.adapter = adapterTreets
+        binding.rvTreets.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        binding.rvBenefits.layoutManager = layoutManager
+        binding.rvTreets.layoutManager = layoutManager
 
-        adapterBenefits.setData(benefitsMockData())
+        adapterTreets.setData(treetsMockData())
     }
 
     private fun initAspectsAdapter() {
-        binding.rvAspects.adapter = adapterIdentities
+        binding.rvAspects.adapter = adapterAspects
         binding.rvAspects.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.rvAspects.layoutManager = layoutManager
 
-        adapterIdentities.setData(aspectsMockData())
+        adapterAspects.setData(aspectsMockData())
     }
 
-    private fun aspectsMockData(): ArrayList<IdentitiesUIModel> {
-        val list = ArrayList<IdentitiesUIModel>()
+    private fun aspectsMockData(): ArrayList<AspectsExtendedUIModel> {
+        val list = ArrayList<AspectsExtendedUIModel>()
         list.add(
-            IdentitiesUIModel(
+            AspectsExtendedUIModel(
                 1,
                 "Design Intern",
                 R.drawable.unsplash_mock_1,
@@ -137,7 +127,7 @@ class NetworkPopupFragment : BottomSheetDialogFragment() {
             )
         )
         list.add(
-            IdentitiesUIModel(
+            AspectsExtendedUIModel(
                 2,
                 "Crypto",
                 R.drawable.crypto,
@@ -147,10 +137,10 @@ class NetworkPopupFragment : BottomSheetDialogFragment() {
         return list
     }
 
-    private fun benefitsMockData(): ArrayList<BenefitsUIModel> {
-        val list = ArrayList<BenefitsUIModel>()
+    private fun treetsMockData(): ArrayList<TreetsUIModel> {
+        val list = ArrayList<TreetsUIModel>()
         list.add(
-            BenefitsUIModel(
+            TreetsUIModel(
                 1,
                 "Fashion 2022",
                 R.drawable.fashion

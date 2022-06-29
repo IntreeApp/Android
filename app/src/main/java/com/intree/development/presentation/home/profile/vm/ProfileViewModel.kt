@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.intree.development.domain.RoomEntity
-import com.intree.development.domain.RoomEntityForPreview
+import com.intree.development.domain.AspectEntity
+import com.intree.development.domain.AspectEntityForPreview
 import com.intree.development.domain.UserProfileEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,11 +16,11 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor() : ViewModel() {
     private val _userEntity = MutableLiveData<UserProfileEntity?>()
 
-    private val _ownRooms = MutableLiveData<List<RoomEntityForPreview>>()
+    private val _ownAspects = MutableLiveData<List<AspectEntityForPreview>>()
 
     var userEntity: LiveData<UserProfileEntity?> = _userEntity
 
-    var ownRooms: LiveData<List<RoomEntityForPreview>> = _ownRooms
+    var ownAspects: LiveData<List<AspectEntityForPreview>> = _ownAspects
 
     var isSignUpFlowFinished: Boolean = false
 
@@ -54,14 +54,14 @@ fun getProfile() {
             .child("showroom")
             .get().addOnSuccessListener { dataSnap ->
                 //Log.i("firebase", "Got value ${it.value}")
-                _ownRooms.value =
-                    dataSnap.children.filter { it.getValue(RoomEntity::class.java)!!.draft == "NO" }
+                _ownAspects.value =
+                    dataSnap.children.filter { it.getValue(AspectEntity::class.java)!!.draft == "NO" }
                         .map {
-                            RoomEntityForPreview(
+                            AspectEntityForPreview(
                                 firebaseId = it.key as String,
-                                title = it.getValue(RoomEntity::class.java)!!.title,
-                                backgroundURL = it.getValue(RoomEntity::class.java)!!.cover,
-                                logoURL = it.getValue(RoomEntity::class.java)!!.logo
+                                title = it.getValue(AspectEntity::class.java)!!.title,
+                                backgroundURL = it.getValue(AspectEntity::class.java)!!.cover,
+                                logoURL = it.getValue(AspectEntity::class.java)!!.logo
                             )
                         }
             }.addOnFailureListener {

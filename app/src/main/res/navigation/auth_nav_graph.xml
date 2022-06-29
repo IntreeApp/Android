@@ -108,9 +108,9 @@
     </fragment>
     <fragment
         android:id="@+id/createRoomFragment"
-        android:name="com.intree.development.presentation.home.room.CreateEditRoomFragment"
+        android:name="com.intree.development.presentation.home.aspect.CreateEditAspectFragment"
         android:label="CreateRoomFragment2"
-        tools:layout="@layout/create_room_fragment">
+        tools:layout="@layout/create_aspect_fragment">
         <action
             android:id="@+id/action_createRoomFragment2_to_roomExistingImagesGalleryFragment2"
             app:destination="@id/roomExistingImagesGalleryFragment2">
@@ -121,7 +121,7 @@
         </action>
         <argument
             android:name="existingRoomToEdit"
-            app:argType="com.intree.development.domain.RoomEntity"
+            app:argType="com.intree.development.domain.AspectEntity"
             app:nullable="true"
             android:defaultValue="@null" />
         <argument
@@ -132,9 +132,9 @@
     </fragment>
     <fragment
         android:id="@+id/roomExistingImagesGalleryFragment2"
-        android:name="com.intree.development.presentation.home.room.RoomExistingImagesGalleryFragment"
+        android:name="com.intree.development.presentation.home.aspect.AspectExistingImagesGalleryFragment"
         android:label="room_existing_images_gallery_fragment"
-        tools:layout="@layout/room_existing_images_gallery_fragment" >
+        tools:layout="@layout/aspect_existing_images_gallery_fragment" >
         <argument
             android:name="roomId"
             app:argType="string" />
@@ -143,7 +143,7 @@
             app:destination="@id/createRoomFragment">
             <argument
                 android:name="existingRoomToEdit"
-                app:argType="com.intree.development.domain.RoomEntity"
+                app:argType="com.intree.development.domain.AspectEntity"
                 app:nullable="true"
                 android:defaultValue="@null" />
             <argument

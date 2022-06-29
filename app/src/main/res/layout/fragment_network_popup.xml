@@ -103,26 +103,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/aspectsStringTextView" />
 
-                                                                        <!--benefitsStringTextView-->
+                                                                        <!--treetsStringTextView-->
 
 
                 <TextView
-                    android:id="@+id/benefitsStringTextView"
+                    android:id="@+id/treetsStringTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="start"
                     android:paddingStart="16dp"
-                    android:text="@string/benefits"
+                    android:text="@string/treets"
                     android:textColor="@color/text"
                     android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@+id/rvAspects" />
 
-                                                                        <!--benefitsRecyclerView-->
+                                                                        <!--treetsRecyclerView-->
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBenefits"
+                    android:id="@+id/rvTreets"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -131,7 +131,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.18"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/benefitsStringTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/treetsStringTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

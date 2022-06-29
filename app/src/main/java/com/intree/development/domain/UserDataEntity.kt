@@ -8,5 +8,5 @@ data class UserDataEntity(
     //var latestLaunch: String = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault()).format(Date()), - deprecated?
     var phone: String = "",
     var photo: UserPhotoVariants = UserPhotoVariants(),
-    var showroom: Map<String, RoomEntity> = HashMap()
+    var showroom: Map<String, AspectEntity> = HashMap()
 )

@@ -205,7 +205,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="45dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/rooms_title"
+            android:text="@string/aspects_title"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lastNameFormHolder" />
@@ -218,7 +218,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/montserrat"
-            android:text="@string/rooms_hint"
+            android:text="@string/aspects_hint"
             android:textSize="12.5sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvRoomsTitle" />
@@ -237,14 +237,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/room_card_background" />
+                android:background="@drawable/aspect_card_background" />
 
             <View
                 android:id="@+id/roomCardBottom"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/room_card_bottom"
+                android:background="@drawable/aspect_card_bottom"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <View
@@ -262,7 +262,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/create_your_first_room"
+                android:text="@string/create_your_first_aspect"
                 android:textColor="@color/backgrounds"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -273,7 +273,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="15dp"
-                android:background="@drawable/room_avatar_background"
+                android:background="@drawable/aspect_avatar_background"
                 app:layout_constraintBottom_toBottomOf="@id/roomCardBackground"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/roomCardBackground" />
