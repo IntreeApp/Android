@@ -130,4 +130,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
     implementation 'com.github.esafirm:android-image-picker:3.0.0-beta5'
+
+    // QR Encoder
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 }

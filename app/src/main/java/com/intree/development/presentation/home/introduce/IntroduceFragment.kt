@@ -1,13 +1,10 @@
 package com.intree.development.presentation.home.introduce
 
-import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -62,7 +59,7 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
                         edtMessage.hint = ""
                         cv.startAnimation(
                         AnimationUtils.loadAnimation(
-                            view?.context, R.anim.move_up
+                            view?.context, R.anim.introduce_move_up
                         )
                     )
 
@@ -72,7 +69,7 @@ class IntroduceFragment : Fragment(R.layout.fragment_introduce) {
                         edtMessage.hint = "Write your introduction message here"
                         cv.startAnimation(
                         AnimationUtils.loadAnimation(
-                            view?.context, R.anim.move_down
+                            view?.context, R.anim.introduce_move_down
                         )
                     )
 

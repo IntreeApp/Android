@@ -6,30 +6,37 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidmads.library.qrgenearator.QRGContents
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.card.MaterialCardView
 import com.intree.development.R
 import com.intree.development.data.model.ReferContactData
 import com.intree.development.databinding.FragmentInviteBinding
 import com.intree.development.presentation.adapter.ContactsAdapter
-import com.intree.development.presentation.home.profile.view_pager.AspectVPAdapter
 import com.intree.development.presentation.home.profile.vm.ProfileViewModel
 import com.intree.development.presentation.interfaces.IContacts
-import com.intree.development.presentation.scanCode.ScanCodeActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
-import com.journeyapps.barcodescanner.ScanOptions
+import androidmads.library.qrgenearator.QRGEncoder
+
+/**
+ *  Press the i-icon to the right of "Choose Aspects" to show sharing options
+ *  */
 
 
 class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
@@ -38,6 +45,9 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
     private val profileVm by viewModels<ProfileViewModel>()
     private val inviteVm by viewModels<InviteViewModel>()
     private val contactsAdapter = ContactsAdapter(this)
+    lateinit var qrEncoder: QRGEncoder
+
+    private val TAG = "InviteFragment"
 
     companion object {
         private const val requestContactCode = 1
@@ -55,23 +65,142 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         if (!::binding.isInitialized) {
             binding = FragmentInviteBinding.inflate(inflater)
         }
-        binding.progressBar.visibility = View.VISIBLE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermissions(requireActivity(), permissionArray, requestContactCode)
+
+        initOnFocusChangeListener()
+
+
         if (allPermissionsGranted()) {
             inviteVm.getContacts(requireContext())
-            initRooms()
+            initAspects()
             initSearching()
-            initAdapter()
             initOnClickListeners()
+            initRadioButton()
+
         } else {
             view.findNavController().navigateUp()
         }
     }
+
+    private fun initOnFocusChangeListener() {
+
+        //Doesn't work. I have no idea why. It works when i set the listener on etPhoneNumber
+        binding.etSearchingContacts.setOnFocusChangeListener  { _, b ->
+            Log.d(TAG, "setOnFocusChangeListener ran")
+            if (b) {
+                Log.d(TAG, "phone editText is in focus")
+
+                binding.sharingOptionsContainer.startAnimation(
+                    AnimationUtils.loadAnimation(
+                    view?.context, R.anim.invite_move_up)
+                )
+            } else {
+                Log.d(TAG, "phone editText is NOT in focus anymore")
+            }
+        }
+    }
+
+    private fun addCheckableGroupCard(name: String, imageResource: Int) {
+        val view = layoutInflater.inflate(R.layout.card_groups_checkable, null)
+
+        val nameView = view.findViewById<TextView>(R.id.nameCardGroupsCheckable)
+        val imageView = view.findViewById<ImageView>(R.id.ivCardGroupsCheckable)
+        val cardView = view.findViewById<MaterialCardView>(R.id.cardViewCheckable)
+
+        nameView.text = name
+        imageView.setImageResource(imageResource)
+
+        cardView.setOnClickListener {
+            cardView.isChecked = !cardView.isChecked
+        }
+
+        binding.cardContainerGroups.addView(view)
+    }
+
+    private fun initRadioButton() {
+        val typefaceBold = resources.getFont(R.font.montserrat_bold)
+        val typefaceNormal = resources.getFont(R.font.montserrat)
+
+        binding.radioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
+
+            if (binding.radioQr.isChecked) {
+                binding.radioQr.typeface = typefaceBold
+                binding.radioDm.typeface = typefaceNormal
+                binding.radioContacts.typeface = typefaceNormal
+                binding.radioLink.typeface = typefaceNormal
+            }
+            if (binding.radioDm.isChecked) {
+                binding.radioDm.typeface = typefaceBold
+                binding.radioQr.typeface = typefaceNormal
+                binding.radioContacts.typeface = typefaceNormal
+                binding.radioLink.typeface = typefaceNormal
+            }
+            if (binding.radioContacts.isChecked) {
+                binding.radioContacts.typeface = typefaceBold
+                binding.radioQr.typeface = typefaceNormal
+                binding.radioDm.typeface = typefaceNormal
+                binding.radioLink.typeface = typefaceNormal
+            }
+            if (binding.radioLink.isChecked) {
+                binding.radioLink.typeface = typefaceBold
+                binding.radioQr.typeface = typefaceNormal
+                binding.radioDm.typeface = typefaceNormal
+                binding.radioContacts.typeface = typefaceNormal
+            }
+
+            when (checkedId) {
+                R.id.radioQr -> {
+                    binding.layoutQR.visibility = View.VISIBLE
+                    binding.layoutLink.visibility = View.GONE
+                    binding.layoutDM.visibility = View.GONE
+                    binding.layoutContacts.visibility = View.GONE
+                    initQrCode()
+                }
+                R.id.radioDm -> {
+                    binding.layoutDM.visibility = View.VISIBLE
+                    binding.layoutQR.visibility = View.GONE
+                    binding.layoutLink.visibility = View.GONE
+                    binding.layoutContacts.visibility = View.GONE
+                }
+                R.id.radioContacts -> {
+                    binding.layoutContacts.visibility = View.VISIBLE
+                    binding.layoutQR.visibility = View.GONE
+                    binding.layoutLink.visibility = View.GONE
+                    binding.layoutDM.visibility = View.GONE
+                    initAdapter()
+                }
+                R.id.radioLink -> {
+                    binding.layoutLink.visibility = View.VISIBLE
+                    binding.layoutQR.visibility = View.GONE
+                    binding.layoutDM.visibility = View.GONE
+                    binding.layoutContacts.visibility = View.GONE
+                }
+            }
+        }
+    }
+
+    private fun initQrCode() {
+        val link = "https://www.erdetfredag.dk/" // Random site for testing purpose
+        qrEncoder = QRGEncoder(link, null, QRGContents.Type.TEXT, 200)
+
+        try {
+
+            val bitmap = qrEncoder.encodeAsBitmap()
+            binding.ivQrView.setImageBitmap(bitmap)
+
+        } catch (e: Exception) {
+            // set bitmap for error
+            binding.ivQrView.setImageResource(R.drawable.ic_delete_or_error)
+
+            e.printStackTrace()
+        }
+    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -81,7 +210,7 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         if (requestCode == requestContactCode) {
             if (allPermissionsGranted()) {
                 inviteVm.getContacts(requireContext())
-                initRooms()
+                initAspects()
                 initSearching()
                 initAdapter()
             } else {
@@ -114,7 +243,14 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun initRooms() {
+    private fun initAspects() {
+
+        // Add New Group button as groups-card
+        addCheckableGroupCard("BJJ", R.drawable.bjj)
+        addCheckableGroupCard("Crypto", R.drawable.crypto)
+        addCheckableGroupCard("Fashion", R.drawable.fashion)
+
+        /*
         profileVm.getOwnRooms()
         val viewpager: ViewPager2 = binding.vpRooms
         viewpager.adapter = AspectVPAdapter(childFragmentManager, lifecycle)
@@ -132,30 +268,30 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
             (viewpager.adapter as AspectVPAdapter).addCreateRoomItem(it.isEmpty())
 
             binding.vpRoomsIndicator.setViewPager(viewpager)
-        }
+        }*/
     }
 
     private fun initSearching() {
-        binding.etSearching.hint = getString(R.string.search_from)
-        binding.etSearching.setOnFocusChangeListener { _, b ->
+        binding.etSearchingContacts.hint = getString(R.string.search_contacts)
+        binding.etSearchingContacts.setOnFocusChangeListener { _, b ->
             if (b) {
-                binding.etSearching.hint = ""
+                binding.etSearchingContacts.hint = ""
             } else {
-                binding.etSearching.hint = getString(R.string.search_from)
+                binding.etSearchingContacts.hint = getString(R.string.search_contacts)
             }
         }
-        binding.etSearching.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        binding.etSearchingContacts.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                binding.etSearching.clearFocus()
+                binding.etSearchingContacts.clearFocus()
                 val imm: InputMethodManager =
                     requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.etSearching.windowToken, 0)
+                imm.hideSoftInputFromWindow(binding.etSearchingContacts.windowToken, 0)
                 return@OnKeyListener true
             }
             false
         })
 
-        binding.etSearching.addTextChangedListener(object : TextWatcher {
+        binding.etSearchingContacts.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -194,6 +330,12 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
             activity?.onBackPressed()
         }
 
+        //for testing purposes
+        binding.infoIconChooseAspects.setOnClickListener {
+            binding.sharingOptionsContainer.visibility = View.VISIBLE
+            binding.layoutLink.visibility = View.VISIBLE
+        }
+/*
         binding.btnScanning.setOnClickListener {
             val options = ScanOptions()
             options.captureActivity = ScanCodeActivity::class.java
@@ -204,8 +346,10 @@ class InviteFragment : Fragment(R.layout.fragment_invite), IContacts {
             options.setBeepEnabled(true)
             options.setBarcodeImageEnabled(true)
             barcodeLauncher.launch(options)
-        }
+        }*/
     }
+
+
 
     private fun initAdapter() {
         inviteVm.contactsLive.observe(viewLifecycleOwner) { contacts ->

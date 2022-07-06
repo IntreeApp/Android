@@ -5,229 +5,396 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:elevation="6dp"
-        android:indeterminateTint="@color/purple"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:drawableStart="@drawable/ic_arrow_12_22"
-                android:drawablePadding="14dp"
-                android:gravity="center"
-                android:padding="6dp"
-                android:text="@string/go_back"
-                android:textColor="@color/black_go_back"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnScanning"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_scanning"
-                app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btnBack"
-                app:layout_constraintWidth_percent="0.1" />
-
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etSearching"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/rectangle_search"
-                android:drawableStart="@drawable/ic_baseline_search_24"
-                android:drawablePadding="4dp"
-                android:lines="1"
-                app:layout_constraintEnd_toEndOf="@+id/btnScanning"
-                app:layout_constraintHeight_percent="0.07"
-                app:layout_constraintStart_toStartOf="@+id/btnBack"
-                app:layout_constraintTop_toBottomOf="@+id/btnBack" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/etSearching"
-                app:layout_constraintStart_toStartOf="@+id/etSearching"
-                app:layout_constraintTop_toBottomOf="@+id/etSearching">
-
+            <RelativeLayout
+                android:id="@+id/titleBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvChoose"
+                    android:id="@+id/btnBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/choose_your"
-                    android:textColor="@color/text"
-                    android:textSize="18sp"
+                    android:layout_margin="8dp"
+                    android:drawableStart="@drawable/ic_arrow_12_22"
+                    android:drawablePadding="14dp"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:textColor="@color/black_go_back"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvChooseRooms"
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="@string/invite"
+                    android:textColor="@color/text"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+
+
+
+
+<!--            onClick: Open dialig with text: The aspects you choose will be visible for the people you invite-->
+            <ImageView
+                android:id="@+id/infoIconChooseAspects"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/titleBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/tvChooseAspectsString"
+                android:src="@drawable/ic_info" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChooseAspectsString"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/choose_aspects"
+                android:textColor="@color/text"
+                android:textSize="18sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                android:layout_below="@+id/tvChooseAspectsString">
+
+                <LinearLayout
+                    android:id="@+id/cardContainerGroups"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/aspect"
-                    android:textColor="@color/purple"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvChoose"
-                    app:layout_constraintStart_toEndOf="@+id/tvChoose"
-                    app:layout_constraintTop_toTopOf="@+id/tvChoose" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:orientation="horizontal"
+                    >
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTheRooms"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:text="@string/the_aspects"
-                android:textColor="@color/text"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/etSearching"
-                app:layout_constraintStart_toStartOf="@+id/etSearching"
-                app:layout_constraintTop_toBottomOf="@+id/cl" />
+                </LinearLayout>
 
+            </HorizontalScrollView>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnHistory"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/btn_purple_rounded"
-                android:text="@string/invite_link"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.05"
-                app:layout_constraintTop_toTopOf="@+id/tv1" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vpRooms"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.25"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTheRooms">
-
-            </androidx.viewpager2.widget.ViewPager2>
-
-            <me.relex.circleindicator.CircleIndicator3
-                android:id="@+id/vpRoomsIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                app:ci_drawable="@drawable/btn_dark_rounded"
-                app:ci_drawable_unselected="@drawable/btn_rounded_outlined_light"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.05"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vpRooms" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvShare"
+            <RelativeLayout
+                android:id="@+id/sharingOptionsContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="@string/share"
-                android:textColor="@color/text"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vpRoomsIndicator" />
+                android:layout_below="@+id/horizontalScrollView"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:padding="8dp"
+                    android:text="@string/how_do_you_want_to_share"
+                    android:textColor="@color/text"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/radioCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="26dp"
+                    app:cardCornerRadius="7dp"
+                    android:backgroundTint="@color/grey"
+                    android:layout_below="@+id/tvShare"
+                    android:layout_centerHorizontal="true">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:layout_below="@+id/tvShare"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioQr"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/qr_code"
+
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@drawable/radio_text_color_selector"
+                            android:textAlignment="center"
+                            android:button="@color/transparent"
+                            android:checked="false"
+                            android:background="@drawable/radio_selector"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioDm"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.6"
+                            android:text="@string/direct_message"
+                            android:textColor="@drawable/radio_text_color_selector"
+                            android:fontFamily="@font/montserrat"
+                            android:textAlignment="center"
+                            android:button="@color/transparent"
+                            android:checked="false"
+                            android:background="@drawable/radio_selector"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioContacts"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/contacts"
+                            android:fontFamily="@font/montserrat"
+                            android:textColor="@drawable/radio_text_color_selector"
+                            android:textAlignment="center"
+                            android:button="@color/transparent"
+                            android:checked="false"
+                            android:background="@drawable/radio_selector"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioLink"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:text="@string/link"
+                            android:fontFamily="@font/montserrat"
+
+                            android:textStyle="bold"
+                            android:textColor="@drawable/radio_text_color_selector"
+                            android:textAlignment="center"
+                            android:button="@color/transparent"
+                            android:checked="true"
+                            android:background="@drawable/radio_selector"/>
+
+                    </RadioGroup>
+
+                </com.google.android.material.card.MaterialCardView>
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/link"
-                android:textColor="@color/purple"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/etSearching"
-                app:layout_constraintTop_toBottomOf="@+id/tvShare" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/generates_a_shareable_link_based_on_your_choosen_aspects"
-                android:textColor="@color/text"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnHistory"
-                app:layout_constraintStart_toStartOf="@+id/tv"
-                app:layout_constraintTop_toBottomOf="@+id/tv" />
+                <RelativeLayout
+                    android:id="@+id/layoutQR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioCardView"
+                    android:visibility="gone">
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/direct"
-                android:textColor="@color/purple"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnHistory"
-                app:layout_constraintStart_toStartOf="@+id/tv1"
-                app:layout_constraintTop_toBottomOf="@+id/tv1" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvScanString"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24sp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="@string/scan_with_a_camera_to_connect"
+                        android:textColor="@color/purple"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_centerHorizontal="true"
+                        />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSendText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/send_a_text_message_with_an_invite_link"
-                android:textColor="@color/text"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/tv2"
-                app:layout_constraintTop_toBottomOf="@+id/tv2" />
+                    <ImageView
+                        android:id="@+id/ivQrView"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/tvScanString"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvContacts"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHeight_percent="0.3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSendText"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutDM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioCardView"
+                    android:visibility="gone"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDirectString"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24sp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="@string/direct_message"
+                        android:textColor="@color/purple"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                    <EditText
+                        android:id="@+id/etPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_below="@+id/tvDirectString"
+                        android:background="@drawable/rectangle_search"
+                        android:drawableStart="@drawable/ic_baseline_phone_24"
+                        android:inputType="phone"
+                        android:paddingStart="10dp"
+                        android:drawablePadding="4dp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnInviteDm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_below="@+id/tvDirectString"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/invite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        android:background="@drawable/btn_dark_squared" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutContacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioCardView"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/etSearchingContacts"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/rectangle_search"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="1"
+                        android:inputType="text"
+                        android:paddingStart="10dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/radioCardView"
+                    android:visibility="gone"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvLinkString"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24sp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="@string/link"
+                        android:textColor="@color/purple"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:layout_centerHorizontal="true"/>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnShareLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvLinkString"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/btn_dark_rounded"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="30dp"
+                        android:text="@string/share_link"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintHeight_percent="0.05" />
+
+                    <!--            onClick: dialog with text: A link everyone can use to send a request to connect with you (Expires after 7 days)-->
+                    <ImageView
+                        android:id="@+id/infoIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="21dp"
+                        android:layout_toEndOf="@+id/tvLinkString"
+                        android:src="@drawable/ic_info" />
+                </RelativeLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:elevation="6dp"
+                    android:indeterminateTint="@color/purple"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvContacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.3"
+
+                    android:visibility="gone"
+                    />
+
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

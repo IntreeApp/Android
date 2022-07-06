@@ -69,8 +69,9 @@
     <string name="go_back">Go back</string>
     <string name="back">Back</string>
     <string name="search_from">Search from your phonebook</string>
+    <string name="search_contacts">Search contacts</string>
     <string name="choose_your">Choose your</string>
-    <string name="the_aspects">The aspects you choose will be visible for the people you invite</string>
+    <string name="the_aspects">The aspects you choose will be\nvisible for the people you invite</string>
     <string name="share">Share</string>
     <string name="send_a_text_message_with_an_invite_link">Send a text message with an invite link</string>
     <string name="generates_a_shareable_link_based_on_your_choosen_aspects">Generates a shareable link based on your choosen Aspects.</string>
@@ -115,6 +116,15 @@
     <string name="aspect">Aspect</string>
     <string name="treets">Treets</string>
     <string name="treet">Treet</string>
+    <string name="choose_aspects">Choose Aspects</string>
+    <string name="step2">Step 2</string>
+    <string name="how_do_you_want_to_share">How do you want to share?</string>
+    <string name="qr_code">QR-code</string>
+    <string name="direct_message">Direct message</string>
+    <string name="contacts">Contacts</string>
+    <string name="share_link">Share link</string>
+    <string name="a_link_everyone_ASO">A link everyone can use to send a request\nto connect (Expires after 7 days)</string>
+    <string name="scan_with_a_camera_to_connect">Scan with a camera\nto connect</string>
 
 
 </resources>

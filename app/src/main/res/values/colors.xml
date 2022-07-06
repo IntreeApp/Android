@@ -29,4 +29,7 @@
     <color name="black_50_percent">#80000000</color>
     <color name="green_focus">#5FD07F</color>
     <color name="red">#DE4545</color>
+
+    <color name="grey">#E8E8EA</color>
+    <color name="grey_slightly_darker">#CDCDCD</color>
 </resources>
